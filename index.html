@@ -103,6 +103,29 @@
   }
   .theme-toggle:hover { border-color: var(--faint); }
 
+  .feat-hero {
+    border: 1px solid var(--block-line); background: var(--block);
+    border-radius: var(--radius); padding: 22px 22px 20px; margin-top: 14px;
+  }
+  .feat-hero h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: -0.01em; }
+  .feat-hero h3 .accent { color: var(--accent); }
+  .feat-hero p { margin: 0; color: var(--muted); font-size: 14.5px; max-width: 46em; }
+  .ns-map { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .ns-map span {
+    font-size: 12.5px; color: var(--text);
+    background: var(--bg); border: 1px solid var(--block-line);
+    border-radius: 6px; padding: 4px 10px;
+  }
+  .ns-map span b { color: var(--accent); font-weight: 600; }
+  .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .feat {
+    border: 1px solid var(--block-line); border-radius: var(--radius);
+    padding: 15px 16px; background: var(--bg);
+  }
+  .feat b { display: block; font-size: 14.5px; margin-bottom: 3px; }
+  .feat p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+  @media (max-width: 520px) { .feat-grid { grid-template-columns: 1fr; } }
+
   footer { margin-top: 56px; color: var(--faint); font-size: 13px; }
   footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
   footer a:hover { color: var(--text); }
@@ -142,7 +165,7 @@
       </svg>
     </div>
     <h1>belt<span class="dot">.</span>ran</h1>
-    <p class="lede">Cliente de banco de dados multi-engine — 11 engines num só app, nativo e leve (~8&nbsp;MB). Cada aba com sua própria conexão.</p>
+    <p class="lede">O cliente de banco de dados multi-engine onde <b style="color:var(--text)">cada aba tem sua própria conexão</b> — queries em paralelo, cancelamento de verdade e reconexão automática. 11 engines, nativo e leve (~8&nbsp;MB).</p>
     <div class="caps">
       <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
       <span class="cap">SQL Server</span><span class="cap">ClickHouse</span><span class="cap">MongoDB</span>
@@ -167,6 +190,36 @@
     <div class="callout" id="macNote" style="display:none">
       <span class="c-ic">🍎</span>
       <span>Na 1ª execução no macOS: clique com o <b>botão direito</b> no app → <b>Abrir</b> (ainda não é notarizado pela Apple). Depois abre normalmente.</span>
+    </div>
+
+    <hr class="rule" />
+    <p class="section-label">Por que belt.ran</p>
+
+    <div class="feat-hero">
+      <h3>Uma conexão <span class="accent">dedicada por aba</span></h3>
+      <p>Nada de fila numa conexão compartilhada. Cada aba roda na sua: queries <b>em paralelo</b>, <b>cancelamento real</b> (out-of-band, direto no servidor — não enfileirado) e <b>reconexão automática</b> quando a sessão cai. Cancelar é cancelar, de verdade.</p>
+    </div>
+
+    <div class="feat-hero" style="margin-top:12px">
+      <h3>11 engines, <span class="accent">um explorer só</span></h3>
+      <p>Relacional, analítico, NoSQL e streaming no mesmo app. O belt.ran fala a organização nativa de cada motor e apresenta tudo numa navegação coerente — schemas, bancos, tópicos, chaves e coleções, sem trocar de ferramenta:</p>
+      <div class="ns-map">
+        <span>PostgreSQL · <b>schemas</b></span>
+        <span>MySQL · <b>databases</b></span>
+        <span>SQL Server · <b>schemas</b></span>
+        <span>ClickHouse · <b>databases</b></span>
+        <span>MongoDB · <b>databases</b></span>
+        <span>Kafka · <b>tópicos</b></span>
+        <span>Redis · <b>chaves</b></span>
+        <span>DynamoDB · <b>tabelas</b></span>
+      </div>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat"><b>Nativo e leve</b><p>Core em Rust, ~8&nbsp;MB. Abre num piscar — sem JVM, sem Electron.</p></div>
+      <div class="feat"><b>Streaming de milhões de linhas</b><p>Cursor no servidor, scroll infinito e backpressure real.</p></div>
+      <div class="feat"><b>Plano de execução visual</b><p>Árvore com custo, linhas e tempo por nó (Postgres e MySQL).</p></div>
+      <div class="feat"><b>Cadernos e biblioteca</b><p>Docs estilo Notion + Git + Jupyter, com versões, params e backlinks.</p></div>
     </div>
 
     <footer>
