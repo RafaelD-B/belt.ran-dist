@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<script>
+  // Aplica o tema salvo antes do render (evita flash). Padrão: claro.
+  try { document.documentElement.setAttribute("data-theme", localStorage.getItem("beltran.site.theme") || "light"); } catch (e) {}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>belt.ran — download</title>
+<meta name="description" content="belt.ran — cliente de banco de dados multi-engine, nativo e leve. Baixe para macOS ou Windows." />
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #37352f;
+    --muted: #787774;
+    --faint: #9b9a97;
+    --line: #ebeae8;
+    --block: #f7f6f3;
+    --block-line: #e9e9e7;
+    --accent: #7857e6;
+    --accent-strong: #6a49d8;
+    --dog: #7857e6;
+    --dog-dark: #5f3fc4;
+    --collar: #e6a23c;
+    --accent-ink: #ffffff;
+    --radius: 8px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  :root[data-theme="dark"] {
+    --bg: #191919; --text: #eeeeec; --muted: #9b9a97; --faint: #6f6f6c;
+    --line: #2a2a2a; --block: #202020; --block-line: #2f2f2f;
+    --accent: #9b7bff; --accent-strong: #8a67f0; --dog: #9b7bff; --dog-dark: #7d5be0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 640px; margin: 0 auto; padding: 96px 24px 80px; }
+
+  .icon { margin-bottom: 20px; }
+  .icon svg { width: 68px; height: auto; display: block; }
+  h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px; }
+  h1 .dot { color: var(--accent); }
+  .lede { font-size: 17px; color: var(--muted); margin: 0 0 4px; max-width: 34em; }
+
+  .meta { color: var(--faint); font-size: 13.5px; margin-top: 10px; }
+  .meta a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .meta a:hover { color: var(--text); }
+
+  .rule { height: 1px; background: var(--line); margin: 40px 0; border: 0; }
+
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); margin: 0 0 14px; }
+
+  .dl { display: flex; flex-direction: column; gap: 10px; }
+  .dl-primary {
+    display: flex; align-items: center; gap: 14px;
+    border: 1px solid var(--block-line); background: var(--block);
+    border-radius: var(--radius); padding: 16px 18px;
+  }
+  .dl-primary .ic { font-size: 22px; width: 26px; text-align: center; }
+  .dl-primary .txt { flex: 1; min-width: 0; }
+  .dl-primary .txt .t { font-weight: 600; font-size: 15px; }
+  .dl-primary .txt .s { color: var(--muted); font-size: 13px; }
+
+  .btn {
+    appearance: none; cursor: pointer; text-decoration: none; white-space: nowrap;
+    font-family: inherit; font-size: 14px; font-weight: 600;
+    padding: 9px 16px; border-radius: 6px; border: 1px solid transparent;
+    background: var(--accent); color: var(--accent-ink);
+    transition: filter .12s ease;
+  }
+  .btn:hover { filter: brightness(1.05); }
+  .btn.secondary { background: transparent; color: var(--text); border-color: var(--block-line); }
+  .btn.secondary:hover { background: var(--block); filter: none; }
+
+  .others { display: flex; flex-wrap: wrap; gap: 8px; }
+  .others .btn { font-weight: 500; }
+
+  .callout {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--block); border: 1px solid var(--block-line);
+    border-radius: var(--radius); padding: 14px 16px; margin-top: 14px;
+    color: var(--muted); font-size: 13.5px; line-height: 1.55;
+  }
+  .callout .c-ic { font-size: 16px; line-height: 1.4; }
+  .callout b { color: var(--text); font-weight: 600; }
+
+  .caps { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .cap { font-size: 12.5px; color: var(--muted); background: var(--block); border: 1px solid var(--block-line); border-radius: 5px; padding: 3px 9px; }
+
+  .theme-toggle {
+    position: fixed; top: 16px; right: 16px; width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; border: 1px solid var(--block-line); background: var(--block);
+    color: var(--text); font-size: 15px; cursor: pointer; line-height: 1;
+  }
+  .theme-toggle:hover { border-color: var(--faint); }
+
+  footer { margin-top: 56px; color: var(--faint); font-size: 13px; }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 520px) {
+    .page { padding: 56px 18px 60px; }
+    h1 { font-size: 32px; }
+    .dl-primary { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+  <button class="theme-toggle" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌙</button>
+  <main class="page">
+    <div class="icon">
+      <svg viewBox="0 0 176 104" role="img" aria-label="belt.ran">
+        <!-- rabo -->
+        <path d="M24 50 Q9 40 8 20" fill="none" stroke="var(--dog)" stroke-width="7" stroke-linecap="round"/>
+        <!-- patas -->
+        <rect x="32" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
+        <rect x="52" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
+        <rect x="96" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
+        <rect x="116" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
+        <!-- corpo comprido -->
+        <rect x="18" y="36" width="112" height="36" rx="18" fill="var(--dog)"/>
+        <!-- cabeça -->
+        <circle cx="132" cy="42" r="19" fill="var(--dog)"/>
+        <!-- focinho -->
+        <rect x="140" y="38" width="34" height="16" rx="8" fill="var(--dog)"/>
+        <!-- coleira (belt) -->
+        <rect x="108" y="34" width="7" height="40" rx="3" fill="var(--collar)"/>
+        <!-- orelha -->
+        <ellipse cx="121" cy="50" rx="9.5" ry="21" fill="var(--dog-dark)"/>
+        <!-- nariz e olho -->
+        <circle cx="172" cy="45" r="3.6" fill="var(--bg)"/>
+        <circle cx="136" cy="36" r="3" fill="var(--bg)"/>
+      </svg>
+    </div>
+    <h1>belt<span class="dot">.</span>ran</h1>
+    <p class="lede">Cliente de banco de dados multi-engine — 11 engines num só app, nativo e leve (~8&nbsp;MB). Cada aba com sua própria conexão.</p>
+    <div class="caps">
+      <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
+      <span class="cap">SQL Server</span><span class="cap">ClickHouse</span><span class="cap">MongoDB</span>
+      <span class="cap">Redis</span><span class="cap">Kafka</span><span class="cap">+3</span>
+    </div>
+
+    <hr class="rule" />
+
+    <p class="section-label">Download</p>
+    <div class="dl">
+      <div class="dl-primary">
+        <span class="ic" id="pIc">🖥️</span>
+        <span class="txt">
+          <div class="t" id="pLabel">Detectando…</div>
+          <div class="s" id="pSub">Recomendado para o seu sistema</div>
+        </span>
+        <a class="btn" id="pBtn" href="#">Baixar</a>
+      </div>
+      <div class="others" id="others"></div>
+    </div>
+
+    <div class="callout" id="macNote" style="display:none">
+      <span class="c-ic">🍎</span>
+      <span>Na 1ª execução no macOS: clique com o <b>botão direito</b> no app → <b>Abrir</b> (ainda não é notarizado pela Apple). Depois abre normalmente.</span>
+    </div>
+
+    <footer>
+      <span id="version">Versão mais recente</span> ·
+      <a id="changelog" href="#">Notas da versão</a> ·
+      <a id="notices" href="#">Licenças de terceiros</a><br />
+      <span style="color:var(--faint)">© 2026 belt.ran · software proprietário</span>
+    </footer>
+  </main>
+
+<script>
+  // Alternância de tema (claro/escuro), memorizada. Padrão: claro.
+  (function () {
+    const root = document.documentElement;
+    const btn = document.getElementById("themeBtn");
+    const sync = () => (btn.textContent = root.getAttribute("data-theme") === "dark" ? "☀️" : "🌙");
+    sync();
+    btn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("beltran.site.theme", next); } catch (e) {}
+      sync();
+    });
+  })();
+
+  const REPO = "RafaelD-B/belt.ran-dist";
+  const RELEASES = `https://github.com/${REPO}/releases`;
+  const PLATFORMS = {
+    macos:   { label: "macOS (Apple Silicon)", ic: "🍎", match: (n) => /\.dmg$/i.test(n) },
+    windows: { label: "Windows",               ic: "⊞",  match: (n) => /-setup\.exe$/i.test(n) || /\.msi$/i.test(n) },
+  };
+  function detectOS() {
+    const ua = navigator.userAgent;
+    const p = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
+    if (/Mac/i.test(p) || /Mac OS X/i.test(ua)) return "macos";
+    if (/Win/i.test(p) || /Windows/i.test(ua)) return "windows";
+    return "windows";
+  }
+  function stable(os) {
+    return `${RELEASES}/latest/download/${os === "macos" ? "belt.ran-macos.dmg" : "belt.ran-windows-setup.exe"}`;
+  }
+  function render(byOS, version) {
+    const primary = detectOS();
+    const p = PLATFORMS[primary];
+    document.getElementById("pIc").textContent = p.ic;
+    document.getElementById("pLabel").textContent = "Baixar para " + (primary === "macos" ? "macOS" : "Windows");
+    document.getElementById("pSub").textContent = p.label;
+    const pBtn = document.getElementById("pBtn");
+    pBtn.href = byOS[primary] || stable(primary);
+    pBtn.textContent = "Baixar";
+
+    const others = document.getElementById("others");
+    others.innerHTML = "";
+    Object.keys(PLATFORMS).filter((os) => os !== primary).forEach((os) => {
+      const a = document.createElement("a");
+      a.className = "btn secondary";
+      a.href = byOS[os] || stable(os);
+      a.textContent = "Baixar para " + (os === "macos" ? "macOS" : "Windows");
+      others.appendChild(a);
+    });
+
+    if (primary === "macos") document.getElementById("macNote").style.display = "flex";
+    if (version) document.getElementById("version").textContent = "Versão " + version;
+    document.getElementById("changelog").href = version ? `${RELEASES}/tag/v${version}` : RELEASES;
+    document.getElementById("notices").href = `${RELEASES}/latest`;
+  }
+  (async () => {
+    try {
+      const r = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`, { headers: { Accept: "application/vnd.github+json" } });
+      if (!r.ok) throw 0;
+      const rel = await r.json();
+      const byOS = {};
+      for (const os of Object.keys(PLATFORMS)) {
+        const hit = (rel.assets || []).find((a) => PLATFORMS[os].match(a.name));
+        if (hit) byOS[os] = hit.browser_download_url;
+      }
+      render(byOS, (rel.tag_name || "").replace(/^v/, ""));
+    } catch { render({}, null); }
+  })();
+</script>
+</body>
+</html>
