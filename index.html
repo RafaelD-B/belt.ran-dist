@@ -46,8 +46,15 @@
 
   .icon { margin-bottom: 20px; }
   .icon svg { width: 68px; height: auto; display: block; }
-  h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px; }
+  .title-row { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; flex-wrap: wrap; }
+  h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
   h1 .dot { color: var(--accent); }
+  .beta {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    border-radius: 999px; padding: 3px 10px; align-self: center;
+  }
   .lede { font-size: 17px; color: var(--muted); margin: 0 0 4px; max-width: 34em; }
 
   .meta { color: var(--faint); font-size: 13.5px; margin-top: 10px; }
@@ -126,6 +133,10 @@
   .feat p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
   @media (max-width: 520px) { .feat-grid { grid-template-columns: 1fr; } }
 
+  .beta-note { margin-top: 28px; }
+  .beta-note a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+  .beta-note a:hover { border-bottom-color: var(--accent); }
+
   footer { margin-top: 56px; color: var(--faint); font-size: 13px; }
   footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
   footer a:hover { color: var(--text); }
@@ -164,7 +175,10 @@
         <circle cx="136" cy="36" r="3" fill="var(--bg)"/>
       </svg>
     </div>
-    <h1>belt<span class="dot">.</span>ran</h1>
+    <div class="title-row">
+      <h1>belt<span class="dot">.</span>ran</h1>
+      <span class="beta">beta</span>
+    </div>
     <p class="lede">O cliente de banco de dados multi-engine onde <b style="color:var(--text)">cada aba tem sua própria conexão</b> — queries em paralelo, cancelamento de verdade e reconexão automática. 11 engines, nativo e leve (~8&nbsp;MB).</p>
     <div class="caps">
       <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
@@ -222,9 +236,15 @@
       <div class="feat"><b>Cadernos e biblioteca</b><p>Docs estilo Notion + Git + Jupyter, com versões, params e backlinks.</p></div>
     </div>
 
+    <div class="callout beta-note">
+      <span class="c-ic">🚧</span>
+      <span><b>Versão beta, em desenvolvimento ativo.</b> Coisas podem mudar e bugs podem aparecer. Encontrou um problema ou tem uma sugestão? <a href="https://github.com/RafaelD-B/belt.ran-dist/issues/new" target="_blank" rel="noopener">Reporte no GitHub</a> — é muito bem-vindo.</span>
+    </div>
+
     <footer>
       <span id="version">Versão mais recente</span> ·
       <a id="changelog" href="#">Notas da versão</a> ·
+      <a href="https://github.com/RafaelD-B/belt.ran-dist/issues" target="_blank" rel="noopener">Reportar bug</a> ·
       <a id="notices" href="#">Licenças de terceiros</a><br />
       <span style="color:var(--faint)">© 2026 belt.ran · software proprietário</span>
     </footer>
