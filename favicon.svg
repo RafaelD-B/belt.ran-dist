@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 176" role="img" aria-label="belt.ran">
+  <rect width="176" height="176" rx="40" fill="#7857e6"/>
+  <g transform="translate(0.6 35.2) scale(.96)">
+    <path d="M24 50 Q9 40 8 20" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+    <rect x="32" y="62" width="11" height="28" rx="5.5" fill="#fff"/>
+    <rect x="52" y="62" width="11" height="28" rx="5.5" fill="#fff"/>
+    <rect x="96" y="62" width="11" height="28" rx="5.5" fill="#fff"/>
+    <rect x="116" y="62" width="11" height="28" rx="5.5" fill="#fff"/>
+    <rect x="18" y="36" width="112" height="36" rx="18" fill="#fff"/>
+    <circle cx="132" cy="42" r="19" fill="#fff"/>
+    <rect x="140" y="38" width="34" height="16" rx="8" fill="#fff"/>
+    <rect x="106" y="32" width="10" height="44" rx="4" fill="#f5b94a"/>
+    <ellipse cx="121" cy="50" rx="9.5" ry="21" fill="#cbbdff"/>
+    <circle cx="172" cy="45" r="3.8" fill="#7857e6"/>
+    <circle cx="136" cy="36" r="3.2" fill="#7857e6"/>
+  </g>
+</svg>
