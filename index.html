@@ -60,7 +60,7 @@
       <span class="beta">beta</span>
     </div>
     <p class="headline">Give your AI agents your databases — <span class="accent">not your passwords.</span></p>
-    <p class="lede">A native, lightweight (~8&nbsp;MB) database client that is also a <b>secure MCP server</b>: Claude Code, Codex and other agents query the connections you already saved — the password stays in the Keychain, production is read-only and risky writes wait for your approval.</p>
+    <p class="lede">A native, lightweight database client (a 10–15&nbsp;MB download) that is also a <b>secure MCP server</b>: Claude Code, Codex and other agents query the connections you already saved — the password stays in the Keychain, production is read-only and risky writes wait for your approval.</p>
     <div class="caps">
       <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
       <span class="cap">SQL Server</span><span class="cap">ClickHouse</span><span class="cap">MongoDB</span>
@@ -195,22 +195,25 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
     </div>
 
     <div class="feat-hero" style="margin-top:12px">
-      <h3>11 engines, <span class="accent">one explorer</span></h3>
-      <p>Relational, analytical, NoSQL and streaming in one app. belt.ran speaks each engine’s native organization and presents it all in one coherent navigation — schemas, databases, topics, keys and collections, without switching tools:</p>
+      <h3>Four flagship engines, <span class="accent">seven more supported</span></h3>
+      <p>PostgreSQL, MySQL, SQL Server and ClickHouse (solid chips) are where we focus polish and parity. SQLite, Doris, MongoDB, Kafka, Redis, DynamoDB and MCP (dashed chips) are supported: connecting, browsing, querying and cancelling work, with lighter tooling. Each engine’s native organization — schemas, databases, topics, keys — in one navigation:</p>
       <div class="ns-map">
         <span>PostgreSQL · <b>schemas</b></span>
         <span>MySQL · <b>databases</b></span>
         <span>SQL Server · <b>schemas</b></span>
         <span>ClickHouse · <b>databases</b></span>
-        <span>MongoDB · <b>databases</b></span>
-        <span>Kafka · <b>topics</b></span>
-        <span>Redis · <b>keys</b></span>
-        <span>DynamoDB · <b>tables</b></span>
+        <span class="sup">SQLite · <b>tables</b></span>
+        <span class="sup">Apache Doris · <b>databases</b></span>
+        <span class="sup">MongoDB · <b>databases</b></span>
+        <span class="sup">Kafka · <b>topics</b></span>
+        <span class="sup">MCP · <b>tools</b></span>
+        <span class="sup">Redis · <b>keys</b></span>
+        <span class="sup">DynamoDB · <b>tables</b></span>
       </div>
     </div>
 
     <div class="feat-grid">
-      <div class="feat"><b>Native and light</b><p>Rust core, ~8&nbsp;MB. Opens in a blink — no JVM, no Electron.</p></div>
+      <div class="feat"><b>Native and light</b><p>Rust core: a 10–15&nbsp;MB download, 38&nbsp;MB installed. No JVM, no Electron.</p></div>
       <div class="feat"><b>Streaming millions of rows</b><p>Server-side cursor, infinite scroll and real backpressure.</p></div>
       <div class="feat"><b>Visual execution plan</b><p>Tree with cost, rows and time per node (Postgres and MySQL).</p></div>
       <div class="feat"><b>Notebooks and library</b><p>Notion + Git + Jupyter style docs, with versions, params and backlinks.</p></div>

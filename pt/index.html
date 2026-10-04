@@ -60,7 +60,7 @@
       <span class="beta">beta</span>
     </div>
     <p class="headline">Dê seus bancos aos agentes de IA — <span class="accent">não suas senhas.</span></p>
-    <p class="lede">Um cliente de banco nativo e leve (~8&nbsp;MB) que também é um <b>servidor MCP seguro</b>: Claude Code, Codex e outros agentes consultam as conexões que você já cadastrou — a senha fica no Keychain, produção é somente-leitura e escritas de risco esperam a sua aprovação.</p>
+    <p class="lede">Um cliente de banco nativo e leve (download de 10–15&nbsp;MB) que também é um <b>servidor MCP seguro</b>: Claude Code, Codex e outros agentes consultam as conexões que você já cadastrou — a senha fica no Keychain, produção é somente-leitura e escritas de risco esperam a sua aprovação.</p>
     <div class="caps">
       <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
       <span class="cap">SQL Server</span><span class="cap">ClickHouse</span><span class="cap">MongoDB</span>
@@ -195,22 +195,25 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
     </div>
 
     <div class="feat-hero" style="margin-top:12px">
-      <h3>11 engines, <span class="accent">um explorer só</span></h3>
-      <p>Relacional, analítico, NoSQL e streaming no mesmo app. O belt.ran fala a organização nativa de cada motor e apresenta tudo numa navegação coerente — schemas, bancos, tópicos, chaves e coleções, sem trocar de ferramenta:</p>
+      <h3>Quatro engines de vitrine, <span class="accent">mais sete suportados</span></h3>
+      <p>PostgreSQL, MySQL, SQL Server e ClickHouse (chips cheios) são onde concentramos polimento e paridade. SQLite, Doris, MongoDB, Kafka, Redis, DynamoDB e MCP (chips tracejados) são suportados: conectar, navegar, consultar e cancelar funcionam, com ferramentas mais enxutas. A organização nativa de cada motor — schemas, bancos, tópicos, chaves — numa navegação só:</p>
       <div class="ns-map">
         <span>PostgreSQL · <b>schemas</b></span>
         <span>MySQL · <b>databases</b></span>
         <span>SQL Server · <b>schemas</b></span>
         <span>ClickHouse · <b>databases</b></span>
-        <span>MongoDB · <b>databases</b></span>
-        <span>Kafka · <b>tópicos</b></span>
-        <span>Redis · <b>chaves</b></span>
-        <span>DynamoDB · <b>tabelas</b></span>
+        <span class="sup">SQLite · <b>tabelas</b></span>
+        <span class="sup">Apache Doris · <b>databases</b></span>
+        <span class="sup">MongoDB · <b>databases</b></span>
+        <span class="sup">Kafka · <b>tópicos</b></span>
+        <span class="sup">MCP · <b>ferramentas</b></span>
+        <span class="sup">Redis · <b>chaves</b></span>
+        <span class="sup">DynamoDB · <b>tabelas</b></span>
       </div>
     </div>
 
     <div class="feat-grid">
-      <div class="feat"><b>Nativo e leve</b><p>Core em Rust, ~8&nbsp;MB. Abre num piscar — sem JVM, sem Electron.</p></div>
+      <div class="feat"><b>Nativo e leve</b><p>Core em Rust: download de 10–15&nbsp;MB, 38&nbsp;MB instalado. Sem JVM, sem Electron.</p></div>
       <div class="feat"><b>Streaming de milhões de linhas</b><p>Cursor no servidor, scroll infinito e backpressure real.</p></div>
       <div class="feat"><b>Plano de execução visual</b><p>Árvore com custo, linhas e tempo por nó (Postgres e MySQL).</p></div>
       <div class="feat"><b>Cadernos e biblioteca</b><p>Docs estilo Notion + Git + Jupyter, com versões, params e backlinks.</p></div>
