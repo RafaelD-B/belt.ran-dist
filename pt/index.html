@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<script>
+  // Aplica o tema salvo antes do render (evita flash). Padrão: claro.
+  try { document.documentElement.setAttribute("data-theme", localStorage.getItem("beltran.site.theme") || "light"); } catch (e) {}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>belt.ran — Dê seus bancos aos agentes de IA, não suas senhas</title>
+<meta name="description" content="Cliente de banco nativo e servidor MCP seguro. Agentes de IA usam suas conexões: a senha fica no Keychain, produção é somente-leitura e escritas pedem seu OK." />
+<link rel="canonical" href="https://belt-ran.com/pt/" />
+<link rel="alternate" hreflang="en" href="https://belt-ran.com/" />
+<link rel="alternate" hreflang="pt-BR" href="https://belt-ran.com/pt/" />
+<link rel="alternate" hreflang="x-default" href="https://belt-ran.com/" />
+<meta name="theme-color" content="#7857e6" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="belt.ran" />
+<meta property="og:title" content="belt.ran — Dê seus bancos aos agentes de IA, não suas senhas" />
+<meta property="og:description" content="Cliente de banco nativo e servidor MCP seguro. Agentes de IA usam suas conexões: a senha fica no Keychain, produção é somente-leitura e escritas pedem seu OK." />
+<meta property="og:url" content="https://belt-ran.com/pt/" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="https://belt-ran.com/assets/og-pt.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="belt.ran: dê seus bancos aos agentes de IA, não suas senhas" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="belt.ran — Dê seus bancos aos agentes de IA, não suas senhas" />
+<meta name="twitter:description" content="Cliente de banco nativo e servidor MCP seguro. Agentes de IA usam suas conexões: a senha fica no Keychain, produção é somente-leitura e escritas pedem seu OK." />
+<meta name="twitter:image" content="https://belt-ran.com/assets/og-pt.png" />
+<link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body>
+  <div class="top-actions">
+    <a class="lang-link" href="../" hreflang="en" data-setlang="en">English</a>
+    <button class="theme-toggle" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌙</button>
+  </div>
+  <main class="page">
+    <div class="icon">
+      <svg viewBox="0 0 176 104" role="img" aria-label="belt.ran">
+        <path d="M24 50 Q9 40 8 20" fill="none" stroke="var(--dog)" stroke-width="7" stroke-linecap="round"/>
+        <rect x="32" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
+        <rect x="52" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
+        <rect x="96" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
+        <rect x="116" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
+        <rect x="18" y="36" width="112" height="36" rx="18" fill="var(--dog)"/>
+        <circle cx="132" cy="42" r="19" fill="var(--dog)"/>
+        <rect x="140" y="38" width="34" height="16" rx="8" fill="var(--dog)"/>
+        <rect x="108" y="34" width="7" height="40" rx="3" fill="var(--collar)"/>
+        <ellipse cx="121" cy="50" rx="9.5" ry="21" fill="var(--dog-dark)"/>
+        <circle cx="172" cy="45" r="3.6" fill="var(--bg)"/>
+        <circle cx="136" cy="36" r="3" fill="var(--bg)"/>
+      </svg>
+    </div>
+    <div class="title-row">
+      <h1>belt<span class="dot">.</span>ran</h1>
+      <span class="beta">beta</span>
+    </div>
+    <p class="headline">Dê seus bancos aos agentes de IA — <span class="accent">não suas senhas.</span></p>
+    <p class="lede">Um cliente de banco nativo e leve (~8&nbsp;MB) que também é um <b>servidor MCP seguro</b>: Claude Code, Codex e outros agentes consultam as conexões que você já cadastrou — a senha fica no Keychain, produção é somente-leitura e escritas de risco esperam a sua aprovação.</p>
+    <div class="caps">
+      <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
+      <span class="cap">SQL Server</span><span class="cap">ClickHouse</span><span class="cap">MongoDB</span>
+      <span class="cap">Redis</span><span class="cap">Kafka</span><span class="cap">+3</span>
+    </div>
+    <div class="cta">
+      <a class="btn" id="heroDl" href="#download">Baixar</a>
+      <a class="btn secondary" href="#agents">Ver como funciona</a>
+    </div>
+
+    <figure class="shot win hero-shot">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <picture class="on-light"><source media="(max-width: 600px)" srcset="../assets/img/pt/approval-light.webp" width="672" height="371" /><img src="../assets/img/pt/hero-light.webp" alt="belt.ran com um pedido de escrita de um agente esperando aprovação: «Aprovar escrita do agente?» mostrando um DELETE em prod-pg, com os botões Recusar e Aprovar e executar, sobre o editor SQL e a grade de resultados" width="1280" height="700" fetchpriority="high" /></picture><picture class="on-dark"><source media="(max-width: 600px)" srcset="../assets/img/pt/approval.webp" width="672" height="371" /><img src="../assets/img/pt/hero.webp" alt="belt.ran com um pedido de escrita de um agente esperando aprovação: «Aprovar escrita do agente?» mostrando um DELETE em prod-pg, com os botões Recusar e Aprovar e executar, sobre o editor SQL e a grade de resultados" width="1280" height="700" loading="lazy" decoding="async" /></picture>
+    </figure>
+
+    <hr class="rule" />
+
+    <p class="section-label" id="download">Download</p>
+    <div class="dl">
+      <div class="dl-primary">
+        <span class="ic" id="pIc">🖥️</span>
+        <span class="txt">
+          <div class="t" id="pLabel">Detectando…</div>
+          <div class="s" id="pSub">Recomendado para o seu sistema</div>
+        </span>
+        <a class="btn" id="pBtn" href="#">Baixar</a>
+      </div>
+      <div class="others" id="others"></div>
+    </div>
+
+    <div id="brewBox" style="display:none">
+      <p class="cmd-label">Ou pelo Homebrew:</p>
+      <div class="cmd">
+        <code><span class="pr">$ </span>brew install --cask rafaeld-b/beltran/beltran</code>
+        <button class="btn secondary copy" data-copy="brew install --cask rafaeld-b/beltran/beltran">Copiar</button>
+      </div>
+    </div>
+
+    <div class="callout" id="macNote" style="display:none">
+      <span class="c-ic">🍎</span>
+      <span>No macOS: abra o <code>.dmg</code> e arraste o belt.ran para <b>Aplicativos</b>. O app é <b>assinado e notarizado pela Apple</b> — abre com duplo clique, sem avisos.</span>
+    </div>
+
+    <div class="callout" id="winNote" style="display:none">
+      <span class="c-ic">⊞</span>
+      <span>No Windows: o instalador <b>ainda não é assinado</b>, então o SmartScreen pode avisar na primeira vez — escolha <b>Mais informações → Executar assim mesmo</b>. As atualizações dentro do app são verificadas por uma assinatura própria. Você pode <a href="#verify">conferir o SHA-256</a> do arquivo antes de executar.</span>
+    </div>
+
+    <details class="verify" id="verify">
+      <summary>Confira o download (SHA-256)</summary>
+      <p>Cada release publica um arquivo <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noopener">SHA256SUMS.txt</a>. Compare o hash do arquivo que você baixou com a linha dele nesse arquivo. Importa mais no Windows, onde o instalador ainda não é assinado.</p>
+      <pre><code><span class="pr"># macOS / Linux</span>
+shasum -a 256 belt.ran-macos.dmg
+<span class="pr"># Windows (PowerShell)</span>
+Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
+    </details>
+
+    <hr class="rule" />
+    <p class="section-label">Por que belt.ran</p>
+
+    <div class="feat-hero" id="agents">
+      <h3>Seus bancos, <span class="accent">seguros para agentes de IA</span></h3>
+      <p>Pare de colar credenciais em chats ou subir containers descartáveis só para o agente ler um banco. O belt.ran vira o servidor MCP do seu Claude Code, Codex ou Cursor — usando as conexões que você já tem.</p>
+      <ul class="checks">
+        <li><b>A senha nunca sai do Keychain</b> — o agente não vê credencial nenhuma.</li>
+        <li><b>Opt-in por conexão</b> — só aparece o que você liberou em «Acesso para agentes».</li>
+        <li><b>Produção é somente-leitura</b> — no Postgres, MySQL, SQLite e ClickHouse quem garante é o próprio banco (a sessão abre em modo leitura); nos demais engines, uma guarda por comando.</li>
+        <li><b>Escritas esperam a sua aprovação</b> — você vê o SQL exato e aprova ou nega; sem resposta em dois minutos, não roda.</li>
+        <li><b>Dados sensíveis mascarados</b> — e-mail, CPF, telefone, senha e token chegam mascarados ao agente; a sua grade continua mostrando tudo.</li>
+        <li><b>Cancelar cancela</b> — parar o agente mata a query no servidor (Postgres, MySQL, SQL Server, ClickHouse, Mongo…); nos demais, aborta a requisição em andamento.</li>
+        <li><b>Tudo auditado</b> — cada chamada do agente fica registrada na aba «Atividade dos agentes».</li>
+      </ul>
+      <div class="cmd">
+        <code><span class="pr">$ </span>claude mcp add --scope user beltran -- beltran mcp</code>
+        <button class="btn secondary copy" data-copy="claude mcp add --scope user beltran -- beltran mcp">Copiar</button>
+      </div>
+      <p class="cmd-note">Instalou pelo <code>.dmg</code>? Troque <code>beltran</code> pelo caminho completo: <code>/Applications/belt.ran.app/Contents/MacOS/beltran</code>. Ou dispense o terminal: conecte Claude Code, Claude Desktop, Cursor ou Codex com um clique em «Acesso para agentes» da conexão.</p>
+    </div>
+
+    <section class="tour tour-split">
+      <div>
+        <h3>Aprove <span class="accent">antes de gravar.</span></h3>
+        <p>Quando um agente quer alterar dados, o belt.ran para e mostra o comando exato — com a conexão, o ambiente e uma contagem regressiva. Aprovou, roda; negou, ou ignorou, nunca roda.</p>
+      </div>
+      <figure class="shot"><img class="on-light" src="../assets/img/pt/approval-light.webp" alt="Diálogo de aprovação: Claude Code quer rodar um DELETE em prod-pg, produção, com os botões Negar e Aprovar e rodar" width="672" height="371" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/approval.webp" alt="Diálogo de aprovação: Claude Code quer rodar um DELETE em prod-pg, produção, com os botões Negar e Aprovar e rodar" width="672" height="371" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <section class="tour">
+      <h3>Veja o que está rodando — <span class="accent">e pare.</span></h3>
+      <p>Enquanto uma query do agente roda, um painel ao vivo mostra a conexão, o SQL e o cronômetro. Um clique cancela no servidor.</p>
+      <figure class="shot"><img class="on-light" src="../assets/img/pt/live-light.webp" alt="Painel «Agente rodando» sobre a grade de resultados, com a conexão de produção, o SQL, o cronômetro e o botão Cancelar" width="1000" height="201" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/live.webp" alt="Painel «Agente rodando» sobre a grade de resultados, com a conexão de produção, o SQL, o cronômetro e o botão Cancelar" width="1000" height="201" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <section class="tour">
+      <h3>Cada chamada, <span class="accent">auditada.</span></h3>
+      <p>O registro de tudo que os agentes fizeram: o que rodaram, quanto demorou, o que foi bloqueado — com o SQL colorido. Fica só no seu computador.</p>
+      <figure class="shot win"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="on-light" src="../assets/img/pt/activity-light.webp" alt="Registro de atividade dos agentes: queries do Claude Code e do Codex com os desfechos OK, escrita bloqueada, tempo esgotado e erro" width="1280" height="540" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/activity.webp" alt="Registro de atividade dos agentes: queries do Claude Code e do Codex com os desfechos OK, escrita bloqueada, tempo esgotado e erro" width="1280" height="540" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <section class="tour tour-split rev">
+      <div>
+        <h3>Conecte seus agentes <span class="accent">com um clique.</span></h3>
+        <p>Claude Code, Claude Desktop, Cursor e Codex: conecte ou desconecte em «Acesso para agentes» da conexão. Descreva o banco para o agente escolher o certo, defina tempo limite e política de escrita, e escolha quais colunas mascarar.</p>
+      </div>
+      <figure class="shot"><img class="on-light" src="../assets/img/pt/access-light.webp" alt="Configurações de acesso para agentes: política de escrita em pedir aprovação, mascaramento de dados sensíveis ligado e botões de conectar com um clique para Claude Code, Claude Desktop, Cursor e Codex" width="640" height="420" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/access.webp" alt="Configurações de acesso para agentes: política de escrita em pedir aprovação, mascaramento de dados sensíveis ligado e botões de conectar com um clique para Claude Code, Claude Desktop, Cursor e Codex" width="640" height="420" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <section class="tour">
+      <h3>Por que não <span class="accent">um servidor MCP comum?</span></h3>
+      <p>Existem bons servidores MCP de código aberto para Postgres, MySQL e outros. Eles foram feitos para expor um banco a um agente; o belt.ran foi feito também para proteger o banco dele.</p>
+      <table class="vs">
+        <thead><tr><th scope="col"><span class="sr-only">Topic</span></th><th scope="col">Um servidor MCP de banco típico</th><th scope="col" class="us">belt.ran</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Credenciais</th><td data-label="Um servidor MCP de banco típico">String de conexão em argumento, variável de ambiente ou arquivo de configuração</td><td class="us" data-label="belt.ran">A senha fica no chaveiro do sistema; o agente nunca a vê</td></tr>
+          <tr><th scope="row">Produção</th><td data-label="Um servidor MCP de banco típico">Somente-leitura por convenção ou por filtro do texto do SQL</td><td class="us" data-label="belt.ran">Somente-leitura garantida pela sessão do banco no Postgres, MySQL, SQLite e ClickHouse</td></tr>
+          <tr><th scope="row">Escritas</th><td data-label="Um servidor MCP de banco típico">Liberadas ou bloqueadas — sem meio-termo</td><td class="us" data-label="belt.ran">Pausadas até você aprovar o SQL exato</td></tr>
+          <tr><th scope="row">Dados sensíveis</th><td data-label="Um servidor MCP de banco típico">Devolvidos como estão</td><td class="us" data-label="belt.ran">Mascarados: e-mail, CPF, telefone, senha, token</td></tr>
+          <tr><th scope="row">Auditoria</th><td data-label="Um servidor MCP de banco típico">O que o cliente do agente registrar</td><td class="us" data-label="belt.ran">Toda chamada registrada e pesquisável, no seu computador</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="tour">
+      <h3>Um cliente de banco de verdade <span class="accent">por baixo.</span></h3>
+      <p>Explorer para 11 engines, editor SQL com IntelliSense e uma grade que faz streaming de milhões de linhas — o cliente que você usaria todo dia, com ou sem agente no meio.</p>
+      <figure class="shot win"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="on-light" src="../assets/img/pt/app-light.webp" alt="Janela principal do belt.ran: explorador de conexões, editor SQL com realce de sintaxe e grade de resultados" width="1280" height="700" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/app.webp" alt="Janela principal do belt.ran: explorador de conexões, editor SQL com realce de sintaxe e grade de resultados" width="1280" height="700" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <div class="feat-hero" style="margin-top:36px">
+      <h3>Uma conexão <span class="accent">dedicada por aba</span></h3>
+      <p>Nada de fila numa conexão compartilhada. Cada aba roda na sua: queries <b>em paralelo</b>, <b>cancelamento real</b> (out-of-band, direto no servidor — não enfileirado) e <b>reconexão automática</b> quando a sessão cai. Cancelar é cancelar, de verdade.</p>
+    </div>
+
+    <div class="feat-hero" style="margin-top:12px">
+      <h3>11 engines, <span class="accent">um explorer só</span></h3>
+      <p>Relacional, analítico, NoSQL e streaming no mesmo app. O belt.ran fala a organização nativa de cada motor e apresenta tudo numa navegação coerente — schemas, bancos, tópicos, chaves e coleções, sem trocar de ferramenta:</p>
+      <div class="ns-map">
+        <span>PostgreSQL · <b>schemas</b></span>
+        <span>MySQL · <b>databases</b></span>
+        <span>SQL Server · <b>schemas</b></span>
+        <span>ClickHouse · <b>databases</b></span>
+        <span>MongoDB · <b>databases</b></span>
+        <span>Kafka · <b>tópicos</b></span>
+        <span>Redis · <b>chaves</b></span>
+        <span>DynamoDB · <b>tabelas</b></span>
+      </div>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat"><b>Nativo e leve</b><p>Core em Rust, ~8&nbsp;MB. Abre num piscar — sem JVM, sem Electron.</p></div>
+      <div class="feat"><b>Streaming de milhões de linhas</b><p>Cursor no servidor, scroll infinito e backpressure real.</p></div>
+      <div class="feat"><b>Plano de execução visual</b><p>Árvore com custo, linhas e tempo por nó (Postgres e MySQL).</p></div>
+      <div class="feat"><b>Cadernos e biblioteca</b><p>Docs estilo Notion + Git + Jupyter, com versões, params e backlinks.</p></div>
+    </div>
+
+    <div class="feat-hero price" style="margin-top:12px">
+      <h3>Grátis <span class="accent">durante o beta</span></h3>
+      <p>O cliente individual é gratuito enquanto o belt.ran está em beta, e a intenção é que continue assim: se houver planos pagos, eles cobrirão recursos de time (políticas de agente compartilhadas, exportação da auditoria) — não o que você usa hoje.</p>
+      <p>O belt.ran é software proprietário; os instaladores são públicos. Ele conecta direto do seu computador aos seus bancos, e as senhas ficam no chaveiro do sistema operacional. Os componentes de terceiros e suas licenças estão nos <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/THIRD-PARTY-NOTICES.md" target="_blank" rel="noopener">avisos</a>.</p>
+      <p><b>Sem telemetria.</b> Além dos bancos em que você conecta, o belt.ran fala com o GitHub ao abrir (para checar atualizações) e, só se você abrir o catálogo MCP, com o registro oficial de MCP. O que um agente lê é processado pelo provedor de modelo desse agente — por isso somente-leitura, aprovação e mascaramento importam.</p>
+    </div>
+
+    <div class="callout beta-note">
+      <span class="c-ic">🚧</span>
+      <span><b>Versão beta, em desenvolvimento ativo.</b> Coisas podem mudar e bugs podem aparecer. Encontrou um problema ou tem uma sugestão? <a href="https://github.com/RafaelD-B/belt.ran-dist/issues/new" target="_blank" rel="noopener">Reporte no GitHub</a> — é muito bem-vindo.</span>
+    </div>
+
+    <footer>
+      <span id="version">Versão mais recente</span> ·
+      <a id="changelog" href="https://github.com/RafaelD-B/belt.ran-dist/releases">Notas da versão</a> ·
+      <a href="https://github.com/RafaelD-B/belt.ran-dist/issues" target="_blank" rel="noopener">Reportar bug</a> ·
+      <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/THIRD-PARTY-NOTICES.md" target="_blank" rel="noopener">Licenças de terceiros</a><br />
+      <span style="color:var(--faint)">© 2026 belt.ran · software proprietário</span>
+    </footer>
+  </main>
+<script src="../assets/site.js"></script>
+</body>
+</html>

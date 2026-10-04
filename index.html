@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8" />
 <script>
@@ -7,170 +7,47 @@
   try { document.documentElement.setAttribute("data-theme", localStorage.getItem("beltran.site.theme") || "light"); } catch (e) {}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>belt.ran — download</title>
-<meta name="description" content="belt.ran — cliente de banco de dados multi-engine, nativo e leve. Baixe para macOS ou Windows." />
-<style>
-  :root {
-    --bg: #ffffff;
-    --text: #37352f;
-    --muted: #787774;
-    --faint: #9b9a97;
-    --line: #ebeae8;
-    --block: #f7f6f3;
-    --block-line: #e9e9e7;
-    --accent: #7857e6;
-    --accent-strong: #6a49d8;
-    --dog: #7857e6;
-    --dog-dark: #5f3fc4;
-    --collar: #e6a23c;
-    --accent-ink: #ffffff;
-    --radius: 8px;
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
-  }
-  :root[data-theme="dark"] {
-    --bg: #191919; --text: #eeeeec; --muted: #9b9a97; --faint: #6f6f6c;
-    --line: #2a2a2a; --block: #202020; --block-line: #2f2f2f;
-    --accent: #9b7bff; --accent-strong: #8a67f0; --dog: #9b7bff; --dog-dark: #7d5be0;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  .page { max-width: 640px; margin: 0 auto; padding: 96px 24px 80px; }
-
-  .icon { margin-bottom: 20px; }
-  .icon svg { width: 68px; height: auto; display: block; }
-  .title-row { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; flex-wrap: wrap; }
-  h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
-  h1 .dot { color: var(--accent); }
-  .beta {
-    font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-    color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent);
-    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-    border-radius: 999px; padding: 3px 10px; align-self: center;
-  }
-  .lede { font-size: 17px; color: var(--muted); margin: 0 0 4px; max-width: 34em; }
-
-  .meta { color: var(--faint); font-size: 13.5px; margin-top: 10px; }
-  .meta a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
-  .meta a:hover { color: var(--text); }
-
-  .rule { height: 1px; background: var(--line); margin: 40px 0; border: 0; }
-
-  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); margin: 0 0 14px; }
-
-  .dl { display: flex; flex-direction: column; gap: 10px; }
-  .dl-primary {
-    display: flex; align-items: center; gap: 14px;
-    border: 1px solid var(--block-line); background: var(--block);
-    border-radius: var(--radius); padding: 16px 18px;
-  }
-  .dl-primary .ic { font-size: 22px; width: 26px; text-align: center; }
-  .dl-primary .txt { flex: 1; min-width: 0; }
-  .dl-primary .txt .t { font-weight: 600; font-size: 15px; }
-  .dl-primary .txt .s { color: var(--muted); font-size: 13px; }
-
-  .btn {
-    appearance: none; cursor: pointer; text-decoration: none; white-space: nowrap;
-    font-family: inherit; font-size: 14px; font-weight: 600;
-    padding: 9px 16px; border-radius: 6px; border: 1px solid transparent;
-    background: var(--accent); color: var(--accent-ink);
-    transition: filter .12s ease;
-  }
-  .btn:hover { filter: brightness(1.05); }
-  .btn.secondary { background: transparent; color: var(--text); border-color: var(--block-line); }
-  .btn.secondary:hover { background: var(--block); filter: none; }
-
-  .others { display: flex; flex-wrap: wrap; gap: 8px; }
-  .others .btn { font-weight: 500; }
-
-  .callout {
-    display: flex; gap: 12px; align-items: flex-start;
-    background: var(--block); border: 1px solid var(--block-line);
-    border-radius: var(--radius); padding: 14px 16px; margin-top: 14px;
-    color: var(--muted); font-size: 13.5px; line-height: 1.55;
-  }
-  .callout .c-ic { font-size: 16px; line-height: 1.4; }
-  .callout b { color: var(--text); font-weight: 600; }
-
-  .caps { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-  .cap { font-size: 12.5px; color: var(--muted); background: var(--block); border: 1px solid var(--block-line); border-radius: 5px; padding: 3px 9px; }
-
-  .theme-toggle {
-    position: fixed; top: 16px; right: 16px; width: 34px; height: 34px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 8px; border: 1px solid var(--block-line); background: var(--block);
-    color: var(--text); font-size: 15px; cursor: pointer; line-height: 1;
-  }
-  .theme-toggle:hover { border-color: var(--faint); }
-
-  .feat-hero {
-    border: 1px solid var(--block-line); background: var(--block);
-    border-radius: var(--radius); padding: 22px 22px 20px; margin-top: 14px;
-  }
-  .feat-hero h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: -0.01em; }
-  .feat-hero h3 .accent { color: var(--accent); }
-  .feat-hero p { margin: 0; color: var(--muted); font-size: 14.5px; max-width: 46em; }
-  .ns-map { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
-  .ns-map span {
-    font-size: 12.5px; color: var(--text);
-    background: var(--bg); border: 1px solid var(--block-line);
-    border-radius: 6px; padding: 4px 10px;
-  }
-  .ns-map span b { color: var(--accent); font-weight: 600; }
-  .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
-  .feat {
-    border: 1px solid var(--block-line); border-radius: var(--radius);
-    padding: 15px 16px; background: var(--bg);
-  }
-  .feat b { display: block; font-size: 14.5px; margin-bottom: 3px; }
-  .feat p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
-  @media (max-width: 520px) { .feat-grid { grid-template-columns: 1fr; } }
-
-  .beta-note { margin-top: 28px; }
-  .beta-note a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
-  .beta-note a:hover { border-bottom-color: var(--accent); }
-
-  footer { margin-top: 56px; color: var(--faint); font-size: 13px; }
-  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
-  footer a:hover { color: var(--text); }
-
-  @media (max-width: 520px) {
-    .page { padding: 56px 18px 60px; }
-    h1 { font-size: 32px; }
-    .dl-primary { flex-direction: column; align-items: flex-start; }
-  }
-</style>
+<title>belt.ran — Give your AI agents your databases, not your passwords</title>
+<meta name="description" content="Native database client and secure MCP server. AI agents use your saved connections: passwords stay in the Keychain, production is read-only, writes need your OK." />
+<link rel="canonical" href="https://belt-ran.com/" />
+<link rel="alternate" hreflang="en" href="https://belt-ran.com/" />
+<link rel="alternate" hreflang="pt-BR" href="https://belt-ran.com/pt/" />
+<link rel="alternate" hreflang="x-default" href="https://belt-ran.com/" />
+<meta name="theme-color" content="#7857e6" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="belt.ran" />
+<meta property="og:title" content="belt.ran — Give your AI agents your databases, not your passwords" />
+<meta property="og:description" content="Native database client and secure MCP server. AI agents use your saved connections: passwords stay in the Keychain, production is read-only, writes need your OK." />
+<meta property="og:url" content="https://belt-ran.com/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://belt-ran.com/assets/og-en.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="belt.ran: give your AI agents your databases, not your passwords" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="belt.ran — Give your AI agents your databases, not your passwords" />
+<meta name="twitter:description" content="Native database client and secure MCP server. AI agents use your saved connections: passwords stay in the Keychain, production is read-only, writes need your OK." />
+<meta name="twitter:image" content="https://belt-ran.com/assets/og-en.png" />
+<link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-  <button class="theme-toggle" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌙</button>
+  <div class="top-actions">
+    <a class="lang-link" href="pt/" hreflang="pt" data-setlang="pt">Português</a>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle light/dark theme" title="Toggle theme">🌙</button>
+  </div>
   <main class="page">
     <div class="icon">
       <svg viewBox="0 0 176 104" role="img" aria-label="belt.ran">
-        <!-- rabo -->
         <path d="M24 50 Q9 40 8 20" fill="none" stroke="var(--dog)" stroke-width="7" stroke-linecap="round"/>
-        <!-- patas -->
         <rect x="32" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
         <rect x="52" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
         <rect x="96" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
         <rect x="116" y="62" width="9" height="26" rx="4.5" fill="var(--dog)"/>
-        <!-- corpo comprido -->
         <rect x="18" y="36" width="112" height="36" rx="18" fill="var(--dog)"/>
-        <!-- cabeça -->
         <circle cx="132" cy="42" r="19" fill="var(--dog)"/>
-        <!-- focinho -->
         <rect x="140" y="38" width="34" height="16" rx="8" fill="var(--dog)"/>
-        <!-- coleira (belt) -->
         <rect x="108" y="34" width="7" height="40" rx="3" fill="var(--collar)"/>
-        <!-- orelha -->
         <ellipse cx="121" cy="50" rx="9.5" ry="21" fill="var(--dog-dark)"/>
-        <!-- nariz e olho -->
         <circle cx="172" cy="45" r="3.6" fill="var(--bg)"/>
         <circle cx="136" cy="36" r="3" fill="var(--bg)"/>
       </svg>
@@ -179,146 +56,183 @@
       <h1>belt<span class="dot">.</span>ran</h1>
       <span class="beta">beta</span>
     </div>
-    <p class="lede">O cliente de banco de dados multi-engine onde <b style="color:var(--text)">cada aba tem sua própria conexão</b> — queries em paralelo, cancelamento de verdade e reconexão automática. 11 engines, nativo e leve (~8&nbsp;MB).</p>
+    <p class="headline">Give your AI agents your databases — <span class="accent">not your passwords.</span></p>
+    <p class="lede">A native, lightweight (~8&nbsp;MB) database client that is also a <b>secure MCP server</b>: Claude Code, Codex and other agents query the connections you already saved — the password stays in the Keychain, production is read-only and risky writes wait for your approval.</p>
     <div class="caps">
       <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
       <span class="cap">SQL Server</span><span class="cap">ClickHouse</span><span class="cap">MongoDB</span>
       <span class="cap">Redis</span><span class="cap">Kafka</span><span class="cap">+3</span>
     </div>
+    <div class="cta">
+      <a class="btn" id="heroDl" href="#download">Download</a>
+      <a class="btn secondary" href="#agents">See how it works</a>
+    </div>
+
+    <figure class="shot win hero-shot">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <picture class="on-light"><source media="(max-width: 600px)" srcset="assets/img/en/approval-light.webp" width="672" height="371" /><img src="assets/img/en/hero-light.webp" alt="belt.ran with an agent’s write request waiting for approval: “Approve agent write?” showing a DELETE on prod-pg, with Deny and Approve and run buttons, over the SQL editor and results grid" width="1280" height="700" fetchpriority="high" /></picture><picture class="on-dark"><source media="(max-width: 600px)" srcset="assets/img/en/approval.webp" width="672" height="371" /><img src="assets/img/en/hero.webp" alt="belt.ran with an agent’s write request waiting for approval: “Approve agent write?” showing a DELETE on prod-pg, with Deny and Approve and run buttons, over the SQL editor and results grid" width="1280" height="700" loading="lazy" decoding="async" /></picture>
+    </figure>
 
     <hr class="rule" />
 
-    <p class="section-label">Download</p>
+    <p class="section-label" id="download">Download</p>
     <div class="dl">
       <div class="dl-primary">
         <span class="ic" id="pIc">🖥️</span>
         <span class="txt">
-          <div class="t" id="pLabel">Detectando…</div>
-          <div class="s" id="pSub">Recomendado para o seu sistema</div>
+          <div class="t" id="pLabel">Detecting…</div>
+          <div class="s" id="pSub">Recommended for your system</div>
         </span>
-        <a class="btn" id="pBtn" href="#">Baixar</a>
+        <a class="btn" id="pBtn" href="#">Download</a>
       </div>
       <div class="others" id="others"></div>
     </div>
 
-    <div class="callout" id="macNote" style="display:none">
-      <span class="c-ic">🍎</span>
-      <span>No macOS: abra o <code>.dmg</code> e arraste o belt.ran para <b>Aplicativos</b>. O app é <b>assinado e notarizado pela Apple</b> — abre com duplo clique, sem avisos.</span>
+    <div id="brewBox" style="display:none">
+      <p class="cmd-label">Or with Homebrew:</p>
+      <div class="cmd">
+        <code><span class="pr">$ </span>brew install --cask rafaeld-b/beltran/beltran</code>
+        <button class="btn secondary copy" data-copy="brew install --cask rafaeld-b/beltran/beltran">Copy</button>
+      </div>
     </div>
 
-    <hr class="rule" />
-    <p class="section-label">Por que belt.ran</p>
+    <div class="callout" id="macNote" style="display:none">
+      <span class="c-ic">🍎</span>
+      <span>On macOS: open the <code>.dmg</code> and drag belt.ran to <b>Applications</b>. The app is <b>signed and notarized by Apple</b> — it opens with a double click, no warnings.</span>
+    </div>
 
-    <div class="feat-hero">
-      <h3>Uma conexão <span class="accent">dedicada por aba</span></h3>
-      <p>Nada de fila numa conexão compartilhada. Cada aba roda na sua: queries <b>em paralelo</b>, <b>cancelamento real</b> (out-of-band, direto no servidor — não enfileirado) e <b>reconexão automática</b> quando a sessão cai. Cancelar é cancelar, de verdade.</p>
+    <div class="callout" id="winNote" style="display:none">
+      <span class="c-ic">⊞</span>
+      <span>On Windows: the installer is <b>not code-signed yet</b>, so SmartScreen may warn you the first time — choose <b>More info → Run anyway</b>. Updates inside the app are verified with a separate signature. You can <a href="#verify">verify the file’s SHA-256</a> before running it.</span>
+    </div>
+
+    <details class="verify" id="verify">
+      <summary>Verify your download (SHA-256)</summary>
+      <p>Every release publishes a <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noopener">SHA256SUMS.txt</a> file. Compare the hash of the file you downloaded with its line in that file. It matters most on Windows, where the installer is not code-signed yet.</p>
+      <pre><code><span class="pr"># macOS / Linux</span>
+shasum -a 256 belt.ran-macos.dmg
+<span class="pr"># Windows (PowerShell)</span>
+Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
+    </details>
+
+    <hr class="rule" />
+    <p class="section-label">Why belt.ran</p>
+
+    <div class="feat-hero" id="agents">
+      <h3>Your databases, <span class="accent">safe for AI agents</span></h3>
+      <p>Stop pasting credentials into chats or spinning up throwaway containers just so an agent can read a database. belt.ran becomes the MCP server for your Claude Code, Codex or Cursor — using the connections you already have.</p>
+      <ul class="checks">
+        <li><b>The password never leaves the Keychain</b> — the agent never sees a credential.</li>
+        <li><b>Opt-in per connection</b> — only what you enable under “Agent access” is visible.</li>
+        <li><b>Production is read-only</b> — on Postgres, MySQL, SQLite and ClickHouse the database itself enforces it (the session opens read-only); on the other engines, a per-command guard.</li>
+        <li><b>Writes wait for your approval</b> — you see the exact SQL and approve or deny it; no answer within two minutes means it does not run.</li>
+        <li><b>Sensitive data is masked</b> — emails, SSNs, phones, passwords and tokens reach the agent masked; your own grid still shows everything.</li>
+        <li><b>Cancel really cancels</b> — stopping the agent kills the query on the server (Postgres, MySQL, SQL Server, ClickHouse, Mongo…); on the rest it aborts the in-flight request.</li>
+        <li><b>Everything audited</b> — every agent call is logged in the “Agent activity” tab.</li>
+      </ul>
+      <div class="cmd">
+        <code><span class="pr">$ </span>claude mcp add --scope user beltran -- beltran mcp</code>
+        <button class="btn secondary copy" data-copy="claude mcp add --scope user beltran -- beltran mcp">Copy</button>
+      </div>
+      <p class="cmd-note">Installed from the <code>.dmg</code>? Replace <code>beltran</code> with the full path: <code>/Applications/belt.ran.app/Contents/MacOS/beltran</code>. Or skip the terminal: connect Claude Code, Claude Desktop, Cursor or Codex with one click from a connection’s “Agent access”.</p>
+    </div>
+
+    <section class="tour tour-split">
+      <div>
+        <h3>Approve <span class="accent">before it writes.</span></h3>
+        <p>When an agent wants to change data, belt.ran stops and shows you the exact statement — with the connection, the environment and a countdown. Approve and it runs; deny, or ignore it, and it never does.</p>
+      </div>
+      <figure class="shot"><img class="on-light" src="assets/img/en/approval-light.webp" alt="Approval dialog: Claude Code wants to run a DELETE on prod-pg, production, with Deny and Approve and run buttons" width="672" height="371" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/approval.webp" alt="Approval dialog: Claude Code wants to run a DELETE on prod-pg, production, with Deny and Approve and run buttons" width="672" height="371" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <section class="tour">
+      <h3>See what it’s running — <span class="accent">and stop it.</span></h3>
+      <p>While an agent query runs, a live panel shows the connection, the SQL and a timer. One click cancels it on the server.</p>
+      <figure class="shot"><img class="on-light" src="assets/img/en/live-light.webp" alt="“Agent running” panel over the results grid, showing the production connection, the SQL, a timer and a Cancel button" width="1000" height="201" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/live.webp" alt="“Agent running” panel over the results grid, showing the production connection, the SQL, a timer and a Cancel button" width="1000" height="201" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <section class="tour">
+      <h3>Every call, <span class="accent">audited.</span></h3>
+      <p>A log of everything the agents did: what they ran, how long it took, what was blocked — with the SQL highlighted. Stored only on your computer.</p>
+      <figure class="shot win"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="on-light" src="assets/img/en/activity-light.webp" alt="Agent activity log: queries from Claude Code and Codex with outcomes OK, write blocked, timed out and error" width="1280" height="540" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/activity.webp" alt="Agent activity log: queries from Claude Code and Codex with outcomes OK, write blocked, timed out and error" width="1280" height="540" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <section class="tour tour-split rev">
+      <div>
+        <h3>Connect your agents <span class="accent">in one click.</span></h3>
+        <p>Claude Code, Claude Desktop, Cursor and Codex: connect or disconnect from a connection’s “Agent access”. Describe the database so the agent picks the right one, set a time limit and a write policy, and choose which columns to mask.</p>
+      </div>
+      <figure class="shot"><img class="on-light" src="assets/img/en/access-light.webp" alt="Agent access settings: write policy set to ask for approval, sensitive-data masking on, and one-click connect buttons for Claude Code, Claude Desktop, Cursor and Codex" width="640" height="402" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/access.webp" alt="Agent access settings: write policy set to ask for approval, sensitive-data masking on, and one-click connect buttons for Claude Code, Claude Desktop, Cursor and Codex" width="640" height="402" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <section class="tour">
+      <h3>Why not <span class="accent">a plain MCP server?</span></h3>
+      <p>There are good open-source MCP servers for Postgres, MySQL and more. They are built to expose a database to an agent; belt.ran is built to also protect it from one.</p>
+      <table class="vs">
+        <thead><tr><th scope="col"><span class="sr-only">Topic</span></th><th scope="col">A typical database MCP server</th><th scope="col" class="us">belt.ran</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Credentials</th><td data-label="A typical database MCP server">Connection string in an argument, environment variable or config file</td><td class="us" data-label="belt.ran">Password stays in the OS keychain; the agent never sees it</td></tr>
+          <tr><th scope="row">Production</th><td data-label="A typical database MCP server">Read-only by convention or by filtering the SQL text</td><td class="us" data-label="belt.ran">Read-only enforced by the database session on Postgres, MySQL, SQLite and ClickHouse</td></tr>
+          <tr><th scope="row">Writes</th><td data-label="A typical database MCP server">Allowed or blocked — nothing in between</td><td class="us" data-label="belt.ran">Paused until you approve the exact SQL</td></tr>
+          <tr><th scope="row">Sensitive data</th><td data-label="A typical database MCP server">Returned as-is</td><td class="us" data-label="belt.ran">Masked: emails, SSNs, phones, passwords, tokens</td></tr>
+          <tr><th scope="row">Audit</th><td data-label="A typical database MCP server">Whatever the agent’s client logs</td><td class="us" data-label="belt.ran">Every call logged and searchable, on your computer</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="tour">
+      <h3>A real database client <span class="accent">underneath.</span></h3>
+      <p>Explorer for 11 engines, an SQL editor with IntelliSense and a results grid that streams millions of rows — the client you would use every day, whether or not an agent is involved.</p>
+      <figure class="shot win"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="on-light" src="assets/img/en/app-light.webp" alt="belt.ran main window: connection explorer, SQL editor with syntax highlighting and a results grid" width="1280" height="700" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/app.webp" alt="belt.ran main window: connection explorer, SQL editor with syntax highlighting and a results grid" width="1280" height="700" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <div class="feat-hero" style="margin-top:36px">
+      <h3>A connection <span class="accent">dedicated to each tab</span></h3>
+      <p>No queue on a shared connection. Each tab runs on its own: queries <b>in parallel</b>, <b>real cancellation</b> (out-of-band, straight to the server — not queued) and <b>automatic reconnection</b> when the session drops. Cancel means cancel.</p>
     </div>
 
     <div class="feat-hero" style="margin-top:12px">
-      <h3>11 engines, <span class="accent">um explorer só</span></h3>
-      <p>Relacional, analítico, NoSQL e streaming no mesmo app. O belt.ran fala a organização nativa de cada motor e apresenta tudo numa navegação coerente — schemas, bancos, tópicos, chaves e coleções, sem trocar de ferramenta:</p>
+      <h3>11 engines, <span class="accent">one explorer</span></h3>
+      <p>Relational, analytical, NoSQL and streaming in one app. belt.ran speaks each engine’s native organization and presents it all in one coherent navigation — schemas, databases, topics, keys and collections, without switching tools:</p>
       <div class="ns-map">
         <span>PostgreSQL · <b>schemas</b></span>
         <span>MySQL · <b>databases</b></span>
         <span>SQL Server · <b>schemas</b></span>
         <span>ClickHouse · <b>databases</b></span>
         <span>MongoDB · <b>databases</b></span>
-        <span>Kafka · <b>tópicos</b></span>
-        <span>Redis · <b>chaves</b></span>
-        <span>DynamoDB · <b>tabelas</b></span>
+        <span>Kafka · <b>topics</b></span>
+        <span>Redis · <b>keys</b></span>
+        <span>DynamoDB · <b>tables</b></span>
       </div>
     </div>
 
     <div class="feat-grid">
-      <div class="feat"><b>Nativo e leve</b><p>Core em Rust, ~8&nbsp;MB. Abre num piscar — sem JVM, sem Electron.</p></div>
-      <div class="feat"><b>Streaming de milhões de linhas</b><p>Cursor no servidor, scroll infinito e backpressure real.</p></div>
-      <div class="feat"><b>Plano de execução visual</b><p>Árvore com custo, linhas e tempo por nó (Postgres e MySQL).</p></div>
-      <div class="feat"><b>Cadernos e biblioteca</b><p>Docs estilo Notion + Git + Jupyter, com versões, params e backlinks.</p></div>
+      <div class="feat"><b>Native and light</b><p>Rust core, ~8&nbsp;MB. Opens in a blink — no JVM, no Electron.</p></div>
+      <div class="feat"><b>Streaming millions of rows</b><p>Server-side cursor, infinite scroll and real backpressure.</p></div>
+      <div class="feat"><b>Visual execution plan</b><p>Tree with cost, rows and time per node (Postgres and MySQL).</p></div>
+      <div class="feat"><b>Notebooks and library</b><p>Notion + Git + Jupyter style docs, with versions, params and backlinks.</p></div>
+    </div>
+
+    <div class="feat-hero price" style="margin-top:12px">
+      <h3>Free <span class="accent">during the beta</span></h3>
+      <p>The individual client is free while belt.ran is in beta, and it is meant to stay that way: if paid plans arrive, they will cover team features (shared agent policies, audit export) — not what you use today.</p>
+      <p>belt.ran is proprietary software; the installers are public. It connects straight from your computer to your databases, and passwords live in your operating system’s keychain. Third-party components and their licenses are listed in the <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/THIRD-PARTY-NOTICES.md" target="_blank" rel="noopener">notices</a>.</p>
+      <p><b>No telemetry.</b> Besides the databases you connect to, belt.ran contacts GitHub when it starts (to check for updates) and, only if you open the MCP catalog, the official MCP registry. What an agent reads is processed by that agent’s own model provider — which is why read-only, approval and masking matter.</p>
     </div>
 
     <div class="callout beta-note">
       <span class="c-ic">🚧</span>
-      <span><b>Versão beta, em desenvolvimento ativo.</b> Coisas podem mudar e bugs podem aparecer. Encontrou um problema ou tem uma sugestão? <a href="https://github.com/RafaelD-B/belt.ran-dist/issues/new" target="_blank" rel="noopener">Reporte no GitHub</a> — é muito bem-vindo.</span>
+      <span><b>Beta version, in active development.</b> Things may change and bugs may show up. Found a problem or have a suggestion? <a href="https://github.com/RafaelD-B/belt.ran-dist/issues/new" target="_blank" rel="noopener">Report it on GitHub</a> — it is very welcome.</span>
     </div>
 
     <footer>
-      <span id="version">Versão mais recente</span> ·
-      <a id="changelog" href="#">Notas da versão</a> ·
-      <a href="https://github.com/RafaelD-B/belt.ran-dist/issues" target="_blank" rel="noopener">Reportar bug</a> ·
-      <a id="notices" href="#">Licenças de terceiros</a><br />
-      <span style="color:var(--faint)">© 2026 belt.ran · software proprietário</span>
+      <span id="version">Latest version</span> ·
+      <a id="changelog" href="https://github.com/RafaelD-B/belt.ran-dist/releases">Release notes</a> ·
+      <a href="https://github.com/RafaelD-B/belt.ran-dist/issues" target="_blank" rel="noopener">Report a bug</a> ·
+      <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/THIRD-PARTY-NOTICES.md" target="_blank" rel="noopener">Third-party notices</a><br />
+      <span style="color:var(--faint)">© 2026 belt.ran · proprietary software</span>
     </footer>
   </main>
-
-<script>
-  // Alternância de tema (claro/escuro), memorizada. Padrão: claro.
-  (function () {
-    const root = document.documentElement;
-    const btn = document.getElementById("themeBtn");
-    const sync = () => (btn.textContent = root.getAttribute("data-theme") === "dark" ? "☀️" : "🌙");
-    sync();
-    btn.addEventListener("click", () => {
-      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("beltran.site.theme", next); } catch (e) {}
-      sync();
-    });
-  })();
-
-  const REPO = "RafaelD-B/belt.ran-dist";
-  const RELEASES = `https://github.com/${REPO}/releases`;
-  const PLATFORMS = {
-    macos:   { label: "macOS (Apple Silicon)", ic: "🍎", match: (n) => /\.dmg$/i.test(n) },
-    windows: { label: "Windows",               ic: "⊞",  match: (n) => /-setup\.exe$/i.test(n) || /\.msi$/i.test(n) },
-  };
-  function detectOS() {
-    const ua = navigator.userAgent;
-    const p = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
-    if (/Mac/i.test(p) || /Mac OS X/i.test(ua)) return "macos";
-    if (/Win/i.test(p) || /Windows/i.test(ua)) return "windows";
-    return "windows";
-  }
-  function stable(os) {
-    return `${RELEASES}/latest/download/${os === "macos" ? "belt.ran-macos.dmg" : "belt.ran-windows-setup.exe"}`;
-  }
-  function render(byOS, version) {
-    const primary = detectOS();
-    const p = PLATFORMS[primary];
-    document.getElementById("pIc").textContent = p.ic;
-    document.getElementById("pLabel").textContent = "Baixar para " + (primary === "macos" ? "macOS" : "Windows");
-    document.getElementById("pSub").textContent = p.label;
-    const pBtn = document.getElementById("pBtn");
-    pBtn.href = byOS[primary] || stable(primary);
-    pBtn.textContent = "Baixar";
-
-    const others = document.getElementById("others");
-    others.innerHTML = "";
-    Object.keys(PLATFORMS).filter((os) => os !== primary).forEach((os) => {
-      const a = document.createElement("a");
-      a.className = "btn secondary";
-      a.href = byOS[os] || stable(os);
-      a.textContent = "Baixar para " + (os === "macos" ? "macOS" : "Windows");
-      others.appendChild(a);
-    });
-
-    if (primary === "macos") document.getElementById("macNote").style.display = "flex";
-    if (version) document.getElementById("version").textContent = "Versão " + version;
-    document.getElementById("changelog").href = version ? `${RELEASES}/tag/v${version}` : RELEASES;
-    document.getElementById("notices").href = `${RELEASES}/latest`;
-  }
-  (async () => {
-    try {
-      const r = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`, { headers: { Accept: "application/vnd.github+json" } });
-      if (!r.ok) throw 0;
-      const rel = await r.json();
-      const byOS = {};
-      for (const os of Object.keys(PLATFORMS)) {
-        const hit = (rel.assets || []).find((a) => PLATFORMS[os].match(a.name));
-        if (hit) byOS[os] = hit.browser_download_url;
-      }
-      render(byOS, (rel.tag_name || "").replace(/^v/, ""));
-    } catch { render({}, null); }
-  })();
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
