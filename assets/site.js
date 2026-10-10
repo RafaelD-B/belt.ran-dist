@@ -50,14 +50,18 @@
   const PLATFORMS = {
     macos:   { label: "macOS (Apple Silicon)", ic: "🍎", name: "macOS",   match: (n) => /\.dmg$/i.test(n) },
     windows: { label: "Windows",               ic: "⊞",  name: "Windows", match: (n) => /-setup\.exe$/i.test(n) || /\.msi$/i.test(n) },
+    linux:   { label: "Linux (x86_64)",        ic: "🐧", name: "Linux",   match: (n) => /\.AppImage$/i.test(n) },
   };
   function detectOS() {
     const ua = navigator.userAgent;
     const p = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
     if (/Mac/i.test(p) || /Mac OS X/i.test(ua)) return "macos";
+    // Android também diz «Linux»; para ele não há instalador desktop — cai no Windows como antes.
+    if (/Linux|X11/i.test(p + " " + ua) && !/Android/i.test(ua)) return "linux";
     return "windows";
   }
-  const stable = (os) => `${RELEASES}/latest/download/${os === "macos" ? "belt.ran-macos.dmg" : "belt.ran-windows-setup.exe"}`;
+  const STABLE = { macos: "belt.ran-macos.dmg", windows: "belt.ran-windows-setup.exe", linux: "belt.ran-linux.AppImage" };
+  const stable = (os) => `${RELEASES}/latest/download/${STABLE[os]}`;
   function render(byOS, version) {
     const primary = detectOS();
     const p = PLATFORMS[primary];
@@ -82,6 +86,8 @@
     if (primary === "macos") {
       document.getElementById("macNote").style.display = "flex";
       document.getElementById("brewBox").style.display = "block";
+    } else if (primary === "linux") {
+      document.getElementById("linuxNote").style.display = "flex";
     } else {
       document.getElementById("winNote").style.display = "flex";
     }

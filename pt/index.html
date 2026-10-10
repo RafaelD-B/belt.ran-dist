@@ -60,7 +60,7 @@
       <span class="beta">beta</span>
     </div>
     <p class="headline">Dê seus bancos aos agentes de IA — <span class="accent">não suas senhas.</span></p>
-    <p class="lede">Um cliente de banco nativo e leve (download de 10–15&nbsp;MB) que também é um <b>servidor MCP seguro</b>: Claude Code, Codex e outros agentes consultam as conexões que você já cadastrou — a senha fica no Keychain, produção é somente-leitura e escritas de risco esperam a sua aprovação.</p>
+    <p class="lede">Um cliente de banco nativo e leve (download de 10–15&nbsp;MB no macOS e no Windows) que também é um <b>servidor MCP seguro</b>: Claude Code, Codex e outros agentes consultam as conexões que você já cadastrou — a senha fica no Keychain, produção é somente-leitura e escritas de risco esperam a sua aprovação.</p>
     <div class="caps">
       <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
       <span class="cap">SQL Server</span><span class="cap">ClickHouse</span><span class="cap">MongoDB</span>
@@ -73,7 +73,7 @@
 
     <figure class="shot win hero-shot">
       <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
-      <picture class="on-light"><source media="(max-width: 600px)" srcset="../assets/img/pt/approval-light.webp" width="672" height="371" /><img src="../assets/img/pt/hero-light.webp" alt="belt.ran com um pedido de escrita de um agente esperando aprovação: «Aprovar escrita do agente?» mostrando um DELETE em prod-pg, com os botões Recusar e Aprovar e executar, sobre o editor SQL e a grade de resultados" width="1280" height="700" fetchpriority="high" /></picture><picture class="on-dark"><source media="(max-width: 600px)" srcset="../assets/img/pt/approval.webp" width="672" height="371" /><img src="../assets/img/pt/hero.webp" alt="belt.ran com um pedido de escrita de um agente esperando aprovação: «Aprovar escrita do agente?» mostrando um DELETE em prod-pg, com os botões Recusar e Aprovar e executar, sobre o editor SQL e a grade de resultados" width="1280" height="700" loading="lazy" decoding="async" /></picture>
+      <picture class="on-light"><source media="(max-width: 600px)" srcset="../assets/img/pt/approval-light.webp" width="672" height="446" /><img src="../assets/img/pt/hero-light.webp" alt="belt.ran com um pedido de escrita de um agente esperando aprovação: «Aprovar escrita do agente?» mostrando um DELETE em prod-pg, com os botões Recusar e Aprovar e executar, sobre o editor SQL e a grade de resultados" width="1280" height="700" fetchpriority="high" /></picture><picture class="on-dark"><source media="(max-width: 600px)" srcset="../assets/img/pt/approval.webp" width="672" height="446" /><img src="../assets/img/pt/hero.webp" alt="belt.ran com um pedido de escrita de um agente esperando aprovação: «Aprovar escrita do agente?» mostrando um DELETE em prod-pg, com os botões Recusar e Aprovar e executar, sobre o editor SQL e a grade de resultados" width="1280" height="700" loading="lazy" decoding="async" /></picture>
     </figure>
 
     <hr class="rule" />
@@ -104,6 +104,11 @@
       <span>No macOS: abra o <code>.dmg</code> e arraste o belt.ran para <b>Aplicativos</b>. O app é <b>assinado e notarizado pela Apple</b> — abre com duplo clique, sem avisos.</span>
     </div>
 
+    <div class="callout" id="linuxNote" style="display:none">
+      <span class="c-ic">🐧</span>
+      <span>No Linux: baixe o <code>.AppImage</code>, rode <code>chmod +x belt.ran-linux.AppImage</code> e abra (precisa do <code>libfuse2</code> no Ubuntu 22.04+); ele <b>se atualiza sozinho</b>. Prefere pacote? Baixe o <code>.deb</code> (<code>sudo apt install ./belt.ran-linux.deb</code>) ou o <code>.rpm</code> na <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest" target="_blank" rel="noopener">página da release</a>. As senhas ficam no chaveiro do sistema, então um Secret Service (gnome-keyring, KWallet) precisa estar rodando na sua sessão. O AppImage tem cerca de 90&nbsp;MB (leva as bibliotecas junto); o <code>.deb</code>, cerca de 17&nbsp;MB. Requer WebKitGTK 2.40 ou mais novo. Você pode <a href="#verify">conferir o SHA-256</a> do arquivo antes de executar.</span>
+    </div>
+
     <div class="callout" id="winNote" style="display:none">
       <span class="c-ic">⊞</span>
       <span>No Windows: o instalador <b>ainda não é assinado</b>, então o SmartScreen pode avisar na primeira vez — escolha <b>Mais informações → Executar assim mesmo</b>. As atualizações dentro do app são verificadas por uma assinatura própria. Você pode <a href="#verify">conferir o SHA-256</a> do arquivo antes de executar.</span>
@@ -111,9 +116,10 @@
 
     <details class="verify" id="verify">
       <summary>Confira o download (SHA-256)</summary>
-      <p>Cada release publica um arquivo <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noopener">SHA256SUMS.txt</a>. Compare o hash do arquivo que você baixou com a linha dele nesse arquivo. Importa mais no Windows, onde o instalador ainda não é assinado.</p>
+      <p>Cada release publica um arquivo <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noopener">SHA256SUMS.txt</a>. Compare o hash do arquivo que você baixou com a linha dele nesse arquivo. Importa mais no Windows e no Linux, onde os instaladores não são assinados.</p>
       <pre><code><span class="pr"># macOS / Linux</span>
 shasum -a 256 belt.ran-macos.dmg
+sha256sum belt.ran-linux.AppImage
 <span class="pr"># Windows (PowerShell)</span>
 Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
     </details>
@@ -126,18 +132,19 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
       <p>Pare de colar credenciais em chats ou subir containers descartáveis só para o agente ler um banco. O belt.ran vira o servidor MCP do seu Claude Code, Codex ou Cursor — usando as conexões que você já tem.</p>
       <ul class="checks">
         <li><b>A senha nunca sai do Keychain</b> — o agente não vê credencial nenhuma.</li>
-        <li><b>Opt-in por conexão</b> — só aparece o que você liberou em «Acesso para agentes».</li>
+        <li><b>O agente vê Gates, nunca as suas conexões</b> — cada Gate tem o próprio usuário de banco (o belt.ran pode criá-lo para você, só leitura a menos que você libere escrita), os próprios bancos e as próprias regras.</li>
         <li><b>Produção é somente-leitura</b> — no Postgres, MySQL, SQLite e ClickHouse quem garante é o próprio banco (a sessão abre em modo leitura); nos demais engines, uma guarda por comando.</li>
-        <li><b>Escritas esperam a sua aprovação</b> — você vê o SQL exato e aprova ou nega; sem resposta em dois minutos, não roda.</li>
-        <li><b>Dados sensíveis mascarados</b> — e-mail, CPF, telefone, senha e token chegam mascarados ao agente; a sua grade continua mostrando tudo.</li>
-        <li><b>Cancelar cancela</b> — parar o agente mata a query no servidor (Postgres, MySQL, SQL Server, ClickHouse, Mongo…); nos demais, aborta a requisição em andamento.</li>
+        <li><b>Escritas esperam a sua aprovação</b> — você vê o SQL exato, quantas linhas ele atinge e o antes → depois, e aprova ou nega; sem resposta em dois minutos, não roda. As aprovações são assinadas: outro programa não consegue aprovar no seu lugar.</li>
+        <li><b>Dados sensíveis mascarados</b> — por coluna e por valor: e-mail, CPF/CNPJ, cartão, telefone, JWT e chaves de API chegam mascarados ao agente; a sua grade continua mostrando tudo.</li>
+        <li><b>Os dados não sequestram o agente</b> — caracteres invisíveis são removidos, células enormes são cortadas e células que parecem instruções para uma IA são sinalizadas ao agente e a você.</li>
+        <li><b>Cancelar cancela</b> — toda chamada tem tempo limite, e parar o agente mata a query no servidor (Postgres, MySQL, SQL Server, ClickHouse, Mongo…); nos demais, aborta a requisição em andamento.</li>
         <li><b>Tudo auditado</b> — cada chamada do agente fica registrada na aba «Atividade dos agentes».</li>
       </ul>
       <div class="cmd">
         <code><span class="pr">$ </span>claude mcp add --scope user beltran -- beltran mcp</code>
         <button class="btn secondary copy" data-copy="claude mcp add --scope user beltran -- beltran mcp">Copiar</button>
       </div>
-      <p class="cmd-note">Instalou pelo <code>.dmg</code>? Troque <code>beltran</code> pelo caminho completo: <code>/Applications/belt.ran.app/Contents/MacOS/beltran</code>. Ou dispense o terminal: conecte Claude Code, Claude Desktop, Cursor ou Codex com um clique em «Acesso para agentes» da conexão.</p>
+      <p class="cmd-note">Instalou pelo <code>.dmg</code>? Troque <code>beltran</code> pelo caminho completo: <code>/Applications/belt.ran.app/Contents/MacOS/beltran</code> (no Linux: <code>/usr/bin/beltran</code> no <code>.deb</code>/<code>.rpm</code>, ou o caminho completo do <code>.AppImage</code>). Ou dispense o terminal: conecte Claude Code, Claude Desktop, Cursor ou Codex com um clique no belt.ran. Na primeira vez, um guia de 3 passos e um banco Demo embutido deixam um agente consultando em um minuto.</p>
     </div>
 
     <section class="tour tour-split">
@@ -145,27 +152,27 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
         <h3>Aprove <span class="accent">antes de gravar.</span></h3>
         <p>Quando um agente quer alterar dados, o belt.ran para e mostra o comando exato — com a conexão, o ambiente e uma contagem regressiva. Aprovou, roda; negou, ou ignorou, nunca roda.</p>
       </div>
-      <figure class="shot"><img class="on-light" src="../assets/img/pt/approval-light.webp" alt="Diálogo de aprovação: Claude Code quer rodar um DELETE em prod-pg, produção, com os botões Negar e Aprovar e rodar" width="672" height="371" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/approval.webp" alt="Diálogo de aprovação: Claude Code quer rodar um DELETE em prod-pg, produção, com os botões Negar e Aprovar e rodar" width="672" height="371" loading="lazy" decoding="async" /></figure>
+      <figure class="shot"><img class="on-light" src="../assets/img/pt/approval-light.webp" alt="Diálogo de aprovação: Claude Code quer rodar um DELETE em prod-pg, produção, com os botões Negar e Aprovar e rodar" width="672" height="446" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/approval.webp" alt="Diálogo de aprovação: Claude Code quer rodar um DELETE em prod-pg, produção, com os botões Negar e Aprovar e rodar" width="672" height="446" loading="lazy" decoding="async" /></figure>
     </section>
 
     <section class="tour">
       <h3>Veja o que está rodando — <span class="accent">e pare.</span></h3>
       <p>Enquanto uma query do agente roda, um painel ao vivo mostra a conexão, o SQL e o cronômetro. Um clique cancela no servidor.</p>
-      <figure class="shot"><img class="on-light" src="../assets/img/pt/live-light.webp" alt="Painel «Agente rodando» sobre a grade de resultados, com a conexão de produção, o SQL, o cronômetro e o botão Cancelar" width="1000" height="201" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/live.webp" alt="Painel «Agente rodando» sobre a grade de resultados, com a conexão de produção, o SQL, o cronômetro e o botão Cancelar" width="1000" height="201" loading="lazy" decoding="async" /></figure>
+      <figure class="shot"><img class="on-light" src="../assets/img/pt/live-light.webp" alt="Painel «Agente rodando» sobre a grade de resultados, com a conexão de produção, o SQL, o cronômetro e o botão Cancelar" width="1000" height="202" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/live.webp" alt="Painel «Agente rodando» sobre a grade de resultados, com a conexão de produção, o SQL, o cronômetro e o botão Cancelar" width="1000" height="202" loading="lazy" decoding="async" /></figure>
     </section>
 
     <section class="tour">
       <h3>Cada chamada, <span class="accent">auditada.</span></h3>
       <p>O registro de tudo que os agentes fizeram: o que rodaram, quanto demorou, o que foi bloqueado — com o SQL colorido. Fica só no seu computador.</p>
-      <figure class="shot win"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="on-light" src="../assets/img/pt/activity-light.webp" alt="Registro de atividade dos agentes: queries do Claude Code e do Codex com os desfechos OK, escrita bloqueada, tempo esgotado e erro" width="1280" height="540" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/activity.webp" alt="Registro de atividade dos agentes: queries do Claude Code e do Codex com os desfechos OK, escrita bloqueada, tempo esgotado e erro" width="1280" height="540" loading="lazy" decoding="async" /></figure>
+      <figure class="shot win"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="on-light" src="../assets/img/pt/activity-light.webp" alt="Registro de atividade dos agentes: queries do Claude Code e do Codex com os desfechos OK, escrita bloqueada, tempo esgotado e erro" width="1280" height="600" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/activity.webp" alt="Registro de atividade dos agentes: queries do Claude Code e do Codex com os desfechos OK, escrita bloqueada, tempo esgotado e erro" width="1280" height="600" loading="lazy" decoding="async" /></figure>
     </section>
 
     <section class="tour tour-split rev">
       <div>
         <h3>Conecte seus agentes <span class="accent">com um clique.</span></h3>
-        <p>Claude Code, Claude Desktop, Cursor e Codex: conecte ou desconecte em «Acesso para agentes» da conexão. Descreva o banco para o agente escolher o certo, defina tempo limite e política de escrita, e escolha quais colunas mascarar.</p>
+        <p>Claude Code, Claude Desktop, Cursor e Codex: conecte ou desconecte com um clique. Depois crie um Gate a partir de uma conexão — comece de um modelo (Analista, Suporte, Desenvolvedor), escolha os bancos, a política de escrita, o tempo limite e o que mascarar — e confira «O que o agente enxerga» antes de liberar.</p>
       </div>
-      <figure class="shot"><img class="on-light" src="../assets/img/pt/access-light.webp" alt="Configurações de acesso para agentes: política de escrita em pedir aprovação, mascaramento de dados sensíveis ligado e botões de conectar com um clique para Claude Code, Claude Desktop, Cursor e Codex" width="640" height="420" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/access.webp" alt="Configurações de acesso para agentes: política de escrita em pedir aprovação, mascaramento de dados sensíveis ligado e botões de conectar com um clique para Claude Code, Claude Desktop, Cursor e Codex" width="640" height="420" loading="lazy" decoding="async" /></figure>
+      <figure class="shot"><img class="on-light" src="../assets/img/pt/access-light.webp" alt="Edição do Gate prod-pg: o papel e a descrição que o agente vê, o ambiente Produção e a política de escrita em Escrita com aprovação" width="640" height="475" loading="lazy" decoding="async" /><img class="on-dark" src="../assets/img/pt/access.webp" alt="Edição do Gate prod-pg: o papel e a descrição que o agente vê, o ambiente Produção e a política de escrita em Escrita com aprovação" width="640" height="475" loading="lazy" decoding="async" /></figure>
     </section>
 
     <section class="tour">
@@ -176,8 +183,9 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
         <tbody>
           <tr><th scope="row">Credenciais</th><td data-label="Um servidor MCP de banco típico">String de conexão em argumento, variável de ambiente ou arquivo de configuração</td><td class="us" data-label="belt.ran">A senha fica no chaveiro do sistema; o agente nunca a vê</td></tr>
           <tr><th scope="row">Produção</th><td data-label="Um servidor MCP de banco típico">Somente-leitura por convenção ou por filtro do texto do SQL</td><td class="us" data-label="belt.ran">Somente-leitura garantida pela sessão do banco no Postgres, MySQL, SQLite e ClickHouse</td></tr>
-          <tr><th scope="row">Escritas</th><td data-label="Um servidor MCP de banco típico">Liberadas ou bloqueadas — sem meio-termo</td><td class="us" data-label="belt.ran">Pausadas até você aprovar o SQL exato</td></tr>
-          <tr><th scope="row">Dados sensíveis</th><td data-label="Um servidor MCP de banco típico">Devolvidos como estão</td><td class="us" data-label="belt.ran">Mascarados: e-mail, CPF, telefone, senha, token</td></tr>
+          <tr><th scope="row">Escritas</th><td data-label="Um servidor MCP de banco típico">Liberadas ou bloqueadas — sem meio-termo</td><td class="us" data-label="belt.ran">Pausadas até você aprovar o SQL exato, com prévia das linhas alteradas</td></tr>
+          <tr><th scope="row">Dados sensíveis</th><td data-label="Um servidor MCP de banco típico">Devolvidos como estão</td><td class="us" data-label="belt.ran">Mascarados por coluna e por valor: e-mail, CPF/CNPJ, cartão, JWT, chaves de API</td></tr>
+          <tr><th scope="row">Injeção de prompt nos dados</th><td data-label="Um servidor MCP de banco típico">As linhas vão ao modelo como estão</td><td class="us" data-label="belt.ran">Caracteres invisíveis removidos, células suspeitas sinalizadas</td></tr>
           <tr><th scope="row">Auditoria</th><td data-label="Um servidor MCP de banco típico">O que o cliente do agente registrar</td><td class="us" data-label="belt.ran">Toda chamada registrada e pesquisável, no seu computador</td></tr>
         </tbody>
       </table>
@@ -213,9 +221,9 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
     </div>
 
     <div class="feat-grid">
-      <div class="feat"><b>Nativo e leve</b><p>Core em Rust: download de 10–15&nbsp;MB, 38&nbsp;MB instalado. Sem JVM, sem Electron.</p></div>
+      <div class="feat"><b>Nativo e leve</b><p>Core em Rust: 38&nbsp;MB instalado; download de 10–15&nbsp;MB no macOS e no Windows (no Linux, o <code>.deb</code> tem cerca de 17&nbsp;MB e o AppImage, cerca de 90&nbsp;MB). Sem JVM, sem Electron.</p></div>
       <div class="feat"><b>Streaming de milhões de linhas</b><p>Cursor no servidor, scroll infinito e backpressure real.</p></div>
-      <div class="feat"><b>Plano de execução visual</b><p>Árvore com custo, linhas e tempo por nó (Postgres e MySQL).</p></div>
+      <div class="feat"><b>Plano de execução visual</b><p>Um grafo da raiz às folhas: arestas da espessura das linhas, operadores caros em cor, varreduras completas e estimativas erradas em destaque (PostgreSQL, MySQL, SQL Server e ClickHouse).</p></div>
       <div class="feat"><b>Cadernos e biblioteca</b><p>Docs estilo Notion + Git + Jupyter, com versões, params e backlinks.</p></div>
     </div>
 

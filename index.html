@@ -60,7 +60,7 @@
       <span class="beta">beta</span>
     </div>
     <p class="headline">Give your AI agents your databases — <span class="accent">not your passwords.</span></p>
-    <p class="lede">A native, lightweight database client (a 10–15&nbsp;MB download) that is also a <b>secure MCP server</b>: Claude Code, Codex and other agents query the connections you already saved — the password stays in the Keychain, production is read-only and risky writes wait for your approval.</p>
+    <p class="lede">A native, lightweight database client (a 10–15&nbsp;MB download on macOS and Windows) that is also a <b>secure MCP server</b>: Claude Code, Codex and other agents query the connections you already saved — the password stays in the Keychain, production is read-only and risky writes wait for your approval.</p>
     <div class="caps">
       <span class="cap">PostgreSQL</span><span class="cap">MySQL</span><span class="cap">SQLite</span>
       <span class="cap">SQL Server</span><span class="cap">ClickHouse</span><span class="cap">MongoDB</span>
@@ -73,7 +73,7 @@
 
     <figure class="shot win hero-shot">
       <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
-      <picture class="on-light"><source media="(max-width: 600px)" srcset="assets/img/en/approval-light.webp" width="672" height="371" /><img src="assets/img/en/hero-light.webp" alt="belt.ran with an agent’s write request waiting for approval: “Approve agent write?” showing a DELETE on prod-pg, with Deny and Approve and run buttons, over the SQL editor and results grid" width="1280" height="700" fetchpriority="high" /></picture><picture class="on-dark"><source media="(max-width: 600px)" srcset="assets/img/en/approval.webp" width="672" height="371" /><img src="assets/img/en/hero.webp" alt="belt.ran with an agent’s write request waiting for approval: “Approve agent write?” showing a DELETE on prod-pg, with Deny and Approve and run buttons, over the SQL editor and results grid" width="1280" height="700" loading="lazy" decoding="async" /></picture>
+      <picture class="on-light"><source media="(max-width: 600px)" srcset="assets/img/en/approval-light.webp" width="672" height="446" /><img src="assets/img/en/hero-light.webp" alt="belt.ran with an agent’s write request waiting for approval: “Approve agent write?” showing a DELETE on prod-pg, with Deny and Approve and run buttons, over the SQL editor and results grid" width="1280" height="700" fetchpriority="high" /></picture><picture class="on-dark"><source media="(max-width: 600px)" srcset="assets/img/en/approval.webp" width="672" height="446" /><img src="assets/img/en/hero.webp" alt="belt.ran with an agent’s write request waiting for approval: “Approve agent write?” showing a DELETE on prod-pg, with Deny and Approve and run buttons, over the SQL editor and results grid" width="1280" height="700" loading="lazy" decoding="async" /></picture>
     </figure>
 
     <hr class="rule" />
@@ -104,6 +104,11 @@
       <span>On macOS: open the <code>.dmg</code> and drag belt.ran to <b>Applications</b>. The app is <b>signed and notarized by Apple</b> — it opens with a double click, no warnings.</span>
     </div>
 
+    <div class="callout" id="linuxNote" style="display:none">
+      <span class="c-ic">🐧</span>
+      <span>On Linux: download the <code>.AppImage</code>, run <code>chmod +x belt.ran-linux.AppImage</code> and open it (it needs <code>libfuse2</code> on Ubuntu 22.04+); it <b>updates itself</b>. Prefer a package? Get the <code>.deb</code> (<code>sudo apt install ./belt.ran-linux.deb</code>) or the <code>.rpm</code> from the <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest" target="_blank" rel="noopener">release page</a>. Passwords live in the system keyring, so a Secret Service (gnome-keyring, KWallet) must be running in your session. The AppImage is about 90&nbsp;MB (it bundles its libraries); the <code>.deb</code> is about 17&nbsp;MB. Needs WebKitGTK 2.40 or newer. You can <a href="#verify">verify the file’s SHA-256</a> before running it.</span>
+    </div>
+
     <div class="callout" id="winNote" style="display:none">
       <span class="c-ic">⊞</span>
       <span>On Windows: the installer is <b>not code-signed yet</b>, so SmartScreen may warn you the first time — choose <b>More info → Run anyway</b>. Updates inside the app are verified with a separate signature. You can <a href="#verify">verify the file’s SHA-256</a> before running it.</span>
@@ -111,9 +116,10 @@
 
     <details class="verify" id="verify">
       <summary>Verify your download (SHA-256)</summary>
-      <p>Every release publishes a <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noopener">SHA256SUMS.txt</a> file. Compare the hash of the file you downloaded with its line in that file. It matters most on Windows, where the installer is not code-signed yet.</p>
+      <p>Every release publishes a <a href="https://github.com/RafaelD-B/belt.ran-dist/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noopener">SHA256SUMS.txt</a> file. Compare the hash of the file you downloaded with its line in that file. It matters most on Windows and Linux, where the installers are not code-signed.</p>
       <pre><code><span class="pr"># macOS / Linux</span>
 shasum -a 256 belt.ran-macos.dmg
+sha256sum belt.ran-linux.AppImage
 <span class="pr"># Windows (PowerShell)</span>
 Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
     </details>
@@ -126,18 +132,19 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
       <p>Stop pasting credentials into chats or spinning up throwaway containers just so an agent can read a database. belt.ran becomes the MCP server for your Claude Code, Codex or Cursor — using the connections you already have.</p>
       <ul class="checks">
         <li><b>The password never leaves the Keychain</b> — the agent never sees a credential.</li>
-        <li><b>Opt-in per connection</b> — only what you enable under “Agent access” is visible.</li>
+        <li><b>Agents see Gates, never your connections</b> — each Gate has its own database user (belt.ran can create it for you, read-only unless you allow writes), its own databases and its own rules.</li>
         <li><b>Production is read-only</b> — on Postgres, MySQL, SQLite and ClickHouse the database itself enforces it (the session opens read-only); on the other engines, a per-command guard.</li>
-        <li><b>Writes wait for your approval</b> — you see the exact SQL and approve or deny it; no answer within two minutes means it does not run.</li>
-        <li><b>Sensitive data is masked</b> — emails, SSNs, phones, passwords and tokens reach the agent masked; your own grid still shows everything.</li>
-        <li><b>Cancel really cancels</b> — stopping the agent kills the query on the server (Postgres, MySQL, SQL Server, ClickHouse, Mongo…); on the rest it aborts the in-flight request.</li>
+        <li><b>Writes wait for your approval</b> — you see the exact SQL, how many rows it touches and the before → after, then approve or deny; no answer within two minutes means it does not run. Approvals are signed, so another program cannot approve on your behalf.</li>
+        <li><b>Sensitive data is masked</b> — by column and by value: emails, SSNs, card numbers, phones, JWTs and API keys reach the agent masked; your own grid still shows everything.</li>
+        <li><b>Data can’t take over the agent</b> — invisible characters are stripped, oversized cells are cut and cells that read like instructions to an AI are flagged to the agent and to you.</li>
+        <li><b>Cancel really cancels</b> — every call has a time limit, and stopping the agent kills the query on the server (Postgres, MySQL, SQL Server, ClickHouse, Mongo…); on the rest it aborts the in-flight request.</li>
         <li><b>Everything audited</b> — every agent call is logged in the “Agent activity” tab.</li>
       </ul>
       <div class="cmd">
         <code><span class="pr">$ </span>claude mcp add --scope user beltran -- beltran mcp</code>
         <button class="btn secondary copy" data-copy="claude mcp add --scope user beltran -- beltran mcp">Copy</button>
       </div>
-      <p class="cmd-note">Installed from the <code>.dmg</code>? Replace <code>beltran</code> with the full path: <code>/Applications/belt.ran.app/Contents/MacOS/beltran</code>. Or skip the terminal: connect Claude Code, Claude Desktop, Cursor or Codex with one click from a connection’s “Agent access”.</p>
+      <p class="cmd-note">Installed from the <code>.dmg</code>? Replace <code>beltran</code> with the full path: <code>/Applications/belt.ran.app/Contents/MacOS/beltran</code> (on Linux: <code>/usr/bin/beltran</code> for the <code>.deb</code>/<code>.rpm</code>, or the full path of the <code>.AppImage</code>). Or skip the terminal: connect Claude Code, Claude Desktop, Cursor or Codex with one click in belt.ran. On first run, a 3-step guide and a built-in Demo database get an agent querying in a minute.</p>
     </div>
 
     <section class="tour tour-split">
@@ -145,27 +152,27 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
         <h3>Approve <span class="accent">before it writes.</span></h3>
         <p>When an agent wants to change data, belt.ran stops and shows you the exact statement — with the connection, the environment and a countdown. Approve and it runs; deny, or ignore it, and it never does.</p>
       </div>
-      <figure class="shot"><img class="on-light" src="assets/img/en/approval-light.webp" alt="Approval dialog: Claude Code wants to run a DELETE on prod-pg, production, with Deny and Approve and run buttons" width="672" height="371" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/approval.webp" alt="Approval dialog: Claude Code wants to run a DELETE on prod-pg, production, with Deny and Approve and run buttons" width="672" height="371" loading="lazy" decoding="async" /></figure>
+      <figure class="shot"><img class="on-light" src="assets/img/en/approval-light.webp" alt="Approval dialog: Claude Code wants to run a DELETE on prod-pg, production, with Deny and Approve and run buttons" width="672" height="446" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/approval.webp" alt="Approval dialog: Claude Code wants to run a DELETE on prod-pg, production, with Deny and Approve and run buttons" width="672" height="446" loading="lazy" decoding="async" /></figure>
     </section>
 
     <section class="tour">
       <h3>See what it’s running — <span class="accent">and stop it.</span></h3>
       <p>While an agent query runs, a live panel shows the connection, the SQL and a timer. One click cancels it on the server.</p>
-      <figure class="shot"><img class="on-light" src="assets/img/en/live-light.webp" alt="“Agent running” panel over the results grid, showing the production connection, the SQL, a timer and a Cancel button" width="1000" height="201" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/live.webp" alt="“Agent running” panel over the results grid, showing the production connection, the SQL, a timer and a Cancel button" width="1000" height="201" loading="lazy" decoding="async" /></figure>
+      <figure class="shot"><img class="on-light" src="assets/img/en/live-light.webp" alt="“Agent running” panel over the results grid, showing the production connection, the SQL, a timer and a Cancel button" width="1000" height="202" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/live.webp" alt="“Agent running” panel over the results grid, showing the production connection, the SQL, a timer and a Cancel button" width="1000" height="202" loading="lazy" decoding="async" /></figure>
     </section>
 
     <section class="tour">
       <h3>Every call, <span class="accent">audited.</span></h3>
       <p>A log of everything the agents did: what they ran, how long it took, what was blocked — with the SQL highlighted. Stored only on your computer.</p>
-      <figure class="shot win"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="on-light" src="assets/img/en/activity-light.webp" alt="Agent activity log: queries from Claude Code and Codex with outcomes OK, write blocked, timed out and error" width="1280" height="540" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/activity.webp" alt="Agent activity log: queries from Claude Code and Codex with outcomes OK, write blocked, timed out and error" width="1280" height="540" loading="lazy" decoding="async" /></figure>
+      <figure class="shot win"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="on-light" src="assets/img/en/activity-light.webp" alt="Agent activity log: queries from Claude Code and Codex with outcomes OK, write blocked, timed out and error" width="1280" height="600" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/activity.webp" alt="Agent activity log: queries from Claude Code and Codex with outcomes OK, write blocked, timed out and error" width="1280" height="600" loading="lazy" decoding="async" /></figure>
     </section>
 
     <section class="tour tour-split rev">
       <div>
         <h3>Connect your agents <span class="accent">in one click.</span></h3>
-        <p>Claude Code, Claude Desktop, Cursor and Codex: connect or disconnect from a connection’s “Agent access”. Describe the database so the agent picks the right one, set a time limit and a write policy, and choose which columns to mask.</p>
+        <p>Claude Code, Claude Desktop, Cursor and Codex: connect or disconnect with one click. Then create a Gate from a connection — start from a template (Analyst, Support, Developer), pick the databases, the write policy, the time limit and what to mask — and check “What the agent sees” before you share it.</p>
       </div>
-      <figure class="shot"><img class="on-light" src="assets/img/en/access-light.webp" alt="Agent access settings: write policy set to ask for approval, sensitive-data masking on, and one-click connect buttons for Claude Code, Claude Desktop, Cursor and Codex" width="640" height="402" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/access.webp" alt="Agent access settings: write policy set to ask for approval, sensitive-data masking on, and one-click connect buttons for Claude Code, Claude Desktop, Cursor and Codex" width="640" height="402" loading="lazy" decoding="async" /></figure>
+      <figure class="shot"><img class="on-light" src="assets/img/en/access-light.webp" alt="Editing the prod-pg Gate: the role and description the agent sees, the Production environment, and the write policy set to Writes need approval" width="640" height="491" loading="lazy" decoding="async" /><img class="on-dark" src="assets/img/en/access.webp" alt="Editing the prod-pg Gate: the role and description the agent sees, the Production environment, and the write policy set to Writes need approval" width="640" height="491" loading="lazy" decoding="async" /></figure>
     </section>
 
     <section class="tour">
@@ -176,8 +183,9 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
         <tbody>
           <tr><th scope="row">Credentials</th><td data-label="A typical database MCP server">Connection string in an argument, environment variable or config file</td><td class="us" data-label="belt.ran">Password stays in the OS keychain; the agent never sees it</td></tr>
           <tr><th scope="row">Production</th><td data-label="A typical database MCP server">Read-only by convention or by filtering the SQL text</td><td class="us" data-label="belt.ran">Read-only enforced by the database session on Postgres, MySQL, SQLite and ClickHouse</td></tr>
-          <tr><th scope="row">Writes</th><td data-label="A typical database MCP server">Allowed or blocked — nothing in between</td><td class="us" data-label="belt.ran">Paused until you approve the exact SQL</td></tr>
-          <tr><th scope="row">Sensitive data</th><td data-label="A typical database MCP server">Returned as-is</td><td class="us" data-label="belt.ran">Masked: emails, SSNs, phones, passwords, tokens</td></tr>
+          <tr><th scope="row">Writes</th><td data-label="A typical database MCP server">Allowed or blocked — nothing in between</td><td class="us" data-label="belt.ran">Paused until you approve the exact SQL, with a preview of the rows it changes</td></tr>
+          <tr><th scope="row">Sensitive data</th><td data-label="A typical database MCP server">Returned as-is</td><td class="us" data-label="belt.ran">Masked by column and by value: emails, SSNs, cards, JWTs, API keys</td></tr>
+          <tr><th scope="row">Prompt injection in data</th><td data-label="A typical database MCP server">Rows go to the model as they are</td><td class="us" data-label="belt.ran">Invisible characters stripped, suspicious cells flagged</td></tr>
           <tr><th scope="row">Audit</th><td data-label="A typical database MCP server">Whatever the agent’s client logs</td><td class="us" data-label="belt.ran">Every call logged and searchable, on your computer</td></tr>
         </tbody>
       </table>
@@ -213,9 +221,9 @@ Get-FileHash .\belt.ran-windows-setup.exe -Algorithm SHA256</code></pre>
     </div>
 
     <div class="feat-grid">
-      <div class="feat"><b>Native and light</b><p>Rust core: a 10–15&nbsp;MB download, 38&nbsp;MB installed. No JVM, no Electron.</p></div>
+      <div class="feat"><b>Native and light</b><p>Rust core: 38&nbsp;MB installed; a 10–15&nbsp;MB download on macOS and Windows (on Linux, the <code>.deb</code> is about 17&nbsp;MB and the AppImage about 90&nbsp;MB). No JVM, no Electron.</p></div>
       <div class="feat"><b>Streaming millions of rows</b><p>Server-side cursor, infinite scroll and real backpressure.</p></div>
-      <div class="feat"><b>Visual execution plan</b><p>Tree with cost, rows and time per node (Postgres and MySQL).</p></div>
+      <div class="feat"><b>Visual execution plan</b><p>A graph from root to leaves: edges as thick as the rows, hot operators in color, full scans and bad estimates flagged (PostgreSQL, MySQL, SQL Server and ClickHouse).</p></div>
       <div class="feat"><b>Notebooks and library</b><p>Notion + Git + Jupyter style docs, with versions, params and backlinks.</p></div>
     </div>
 
